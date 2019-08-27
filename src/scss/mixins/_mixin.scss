@@ -1,0 +1,93 @@
+//----------------------------------------------------------------------
+// 盒子样式模块
+@import "mixin_box";
+//----------------------------------------------------------------------
+// 文本样式模块
+@import "mixin_text";
+//----------------------------------------------------------------------
+//---------------------------
+// 媒体查询 //
+//---------------------------
+// 媒体查询 //
+
+// 最小宽度
+@mixin min_w($w: 320px) {
+    @media (min-width: $w) {
+        @content;
+    }
+}
+// 最大宽度
+@mixin max_w($w: 1080px) {
+    @media (max-width: $w) {
+        @content;
+    }
+}
+// 扩展模块 //
+//----------------------------------------------------------------------
+// 进度条
+@mixin pro($parentBgc: #fff, $sonBgc: #000, $w: 100%, $h: 100%) {
+    .pro-bar {
+        @include bgcBox($parentBgc, $w, $h);
+        
+        .pro-speed {
+            @include bgcBox($sonBgc, $w, $h);
+        }
+    }
+}
+// 自适应边距盒子
+@mixin autoBox($w: auto, $h: auto) {
+    @include createBox($w, $h);
+    margin: 0 auto;
+}
+// 文本显示控制
+@mixin textOverFlow($w: auto) {
+    @include createBox($w);
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+@mixin textHidden {
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+// 气泡
+@mixin bubble($fc, $bgc, $bubbleWidth, $radius) {
+    position: relative;
+    color: $fc;
+    @include bgc_radiusBox($bgc, $radius);
+    
+    .bubble {
+        position: absolute;
+        width: 0;
+        @content;
+        border: {
+            width: $bubbleWidth;
+            style: solid;
+            color: $bgc transparent transparent;
+        }
+    }
+}
+// 背景渐变
+@mixin bgl($list: (blue skyblue), $type: top) {
+    @include eachList_ForMap(CssBrowserRsp(('background': Blg($list, $type))), 'value');
+}
+// 清除同胞元素像素类型样式
+@mixin clearElstyle($key: margin, $v: 10px, $elindex: 'end') {
+    #{$key}: #{$v};
+    @if ($elindex == 'end') {
+        &:last-child {
+            #{$key}: 0;
+        }
+    }
+    @if ($elindex == 'start') {
+        &:first-child {
+            #{$key}: 0;
+        }
+    }
+    @if (type-of($value: $elindex) == 'number') {
+        &:nth-child(#{$elindex}) {
+            #{$key}: 0;
+        }
+    }
+}

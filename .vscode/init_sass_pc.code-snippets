@@ -3,8 +3,8 @@
 		"scope": "sass",
 		"prefix": "initpc",
 		"body": [
-			"@import 'D:/Siykt/scss/mixin/mixin'",
-			"@import 'D:/Siykt/scss/mixin/deletstyle'",
+			"@import '../../scss/mixin/mixin'",
+			"@import '../../scss/mixin/deletstyle'",
 			"%fc",
 			"\t@include flexCenter\n",
 			"%fs",

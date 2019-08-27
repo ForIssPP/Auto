@@ -13,9 +13,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-   @import 'D:/Siykt/scss/mixin/mixin';
-   @import 'D:/Siykt/scss/mixin/deletstyle';
-   @import 'D:/Siykt/scss/mixin/responsive';
+   @import '../../scss/mixin/mixin';
+   @import '../../scss/mixin/deletstyle';
+   @import '../../scss/mixin/responsive';
    
    %fc {
        @include flexCenter;

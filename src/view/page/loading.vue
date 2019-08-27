@@ -19,7 +19,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import 'D:/Siykt/scss/mixin/mixin';
+@import '../../scss/mixins/mixin';
 
 %fc {
   @include flexCenter;
