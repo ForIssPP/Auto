@@ -37,7 +37,7 @@ export default {
       noLists: [],
       show: true
     };
-  }, 
+  },
   methods: {
     getApi,
     imageGetError
