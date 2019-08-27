@@ -14,7 +14,7 @@
 import textBox from "./textBox.vue";
 import btnClick from "../everyday_order/btnClick.vue";
 import liveapi from "../../modules/live.api";
-import getQueryVariable from "js/module/getQueryVariable";
+import getQueryVariable from "../../modules/getQueryVariable";
 import CHARGE_CONFIG from "./charge.config.json";
 
 export default {
