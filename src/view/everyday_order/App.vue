@@ -18,7 +18,7 @@
 <script>
 import orderList from "./orderList.vue";
 import btnClick from "./btnClick.vue";
-import liveapi from "js/module/live.api";
+import liveapi from "../../modules/live.api";
 import $ from "jquery";
 import getQueryVariable from "../../modules/getQueryVariable";
 import getApi from "../../modules/getApi";

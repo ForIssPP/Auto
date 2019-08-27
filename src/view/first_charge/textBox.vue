@@ -16,7 +16,7 @@
 </template>
 <script>
 import btnClick from "../everyday_order/btnClick.vue";
-import liveapi from "js/module/live.api";
+import liveapi from "../../modules/live.api";
 
 export default {
   props: {

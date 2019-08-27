@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './view/everyday_top/App.vue';
+import App from './view/everyday_order/App.vue';
 
 // (function (d, s, id) {
 //     var js,

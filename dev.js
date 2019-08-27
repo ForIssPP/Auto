@@ -11,7 +11,6 @@ module.exports = merge(config, {
         disableHostCheck: true,
         hot: true,
         host: 'loc.mjliveapp.com',
-        port: 8080,
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
