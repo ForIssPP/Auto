@@ -20,8 +20,8 @@ import orderList from "./orderList.vue";
 import btnClick from "./btnClick.vue";
 import liveapi from "js/module/live.api";
 import $ from "jquery";
-import getQueryVariable from "js/module/getQueryVariable";
-import getApi from "../modules/getApi";
+import getQueryVariable from "../../modules/getQueryVariable";
+import getApi from "../../modules/getApi";
 
 export default {
   data() {

@@ -26,9 +26,9 @@
   </div>
 </template>
 <script>
-import getApi from "../modules/getApi";
-import getQueryVariable from "../modules/getQueryVariable";
-import imageGetError from "../modules/imageGetError";
+import getApi from "../../modules/getApi";
+import getQueryVariable from "../../modules/getQueryVariable";
+import imageGetError from "../../modules/imageGetError";
 import loading from "../page/loading.vue";
 
 export default {

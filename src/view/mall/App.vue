@@ -23,7 +23,7 @@
 </template>
 <script>
 import btnClick from "../everyday_order/btnClick.vue";
-import getQueryVariable from "js/module/getQueryVariable";
+import getQueryVariable from "../../modules/getQueryVariable";
 import imageInfo from "../everyday_order/imageInfo.vue";
 
 export default {
