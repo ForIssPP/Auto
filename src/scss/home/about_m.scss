@@ -1,0 +1,109 @@
+@import 'D:/Siykt/scss/mixin/mixin';
+@import 'D:/Siykt/scss/mixin/deletstyle';
+@import 'D:/Siykt/scss/mixin/responsive';
+@import './header_m.scss';
+$n100: 100%;
+$w: 1121px;
+
+%fc {
+    @include flexCenter;
+}
+
+%fs {
+    @include createFlexBox(center, flex-start, row);
+}
+
+%fcs {
+    @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+    @include flexColumnCenter;
+}
+
+body {
+    @extend %fcc;
+
+    &>* {
+        width: $n100;
+    }
+}
+
+%cf {
+    @include c_fz(#333333FF, .3rem);
+    padding: 0 .3rem;
+}
+
+#logo {
+    .logo {
+        @include bgc_bgurl('http://temp.im/216x50', 2.16rem, .5rem);
+    }
+}
+
+nav {
+    @extend %fc;
+    width: $n100;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+
+    ul {
+        @extend %fc;
+        justify-content: space-evenly;
+        width: $n100;
+    }
+
+    li {
+        flex: 1;
+        @extend %fc;
+    }
+
+    a {
+        @include cfz_fw(#999999FF, .3rem, 500);
+        margin-bottom: 0.2rem;
+    }
+
+    li.active a {
+        color: #A476E9FF;
+    }
+
+    .space {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 0.04rem;
+
+        .swiper-scrollbar-drag {
+            background-color: #A476E9FF;
+        }
+    }
+
+}
+
+.swiper-container {
+    height: 13.14rem;
+    overflow-y: hidden;
+}
+
+.swiper-slide {
+    overflow-y: auto;
+
+    h1 {
+        @extend %cf;
+        padding-top: .5rem;
+        text-align: center;
+        margin: 7px 0 37px;
+    }
+
+    h2 {
+        @extend %cf;
+        margin-bottom: 22px;
+    }
+
+    p {
+        @include cfz_ta(#666666FF, .26rem, justify);
+        margin-bottom: 30px;
+        padding: 0 .3rem;
+    }
+}
+
+// @include rem();

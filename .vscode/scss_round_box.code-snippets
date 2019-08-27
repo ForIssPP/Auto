@@ -1,0 +1,10 @@
+{
+	"round box mixin sass": {
+		"scope": "scss,sass",
+		"prefix": "rob",
+		"body": [
+			"@include roundBox($1rem);",
+		],
+		"description": "round box SCSS"
+	}
+}

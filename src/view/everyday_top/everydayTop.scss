@@ -1,0 +1,54 @@
+@import 'D:/Siykt/scss/mixin/mixin';
+@import 'D:/Siykt/scss/mixin/deletstyle';
+@import 'D:/Siykt/scss/mixin/responsive';
+@import '../../scss/plugins/box';
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+$url: ('url': '',
+  'w': 6.47rem,
+  'h': 10.13rem,
+  't': 1.4rem,
+);
+
+$title: ('c': #27035EFF,
+  'fz': .3rem,
+  'fw': 500,
+);
+$flexText: 0 0 20%;
+$nthContrl: ('n': 5,
+  'map': (flex: ($flexText, 0 0 .6rem, $flexText, $flexText, $flexText)),
+);
+
+$ul: ('c': #000,
+  'fz': .28rem,
+  'tw': 500,
+  'mt': .15rem,
+  'pw': .6rem,
+  'flex': ($flexText, 0 0 .6rem, $flexText, $flexText, $flexText),
+  'img': .6rem
+);
+
+@include createTopsBox($url, $title, $nthContrl, $ul, $o: 7.36rem);
+
+.box {
+  margin-top: -.7rem;
+}

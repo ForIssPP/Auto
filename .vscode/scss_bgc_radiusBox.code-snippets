@@ -1,0 +1,10 @@
+{
+	"bgc_radiusBox mixin sass": {
+		"scope": "scss,sass",
+		"prefix": "bgc_radiusBox",
+		"body": [
+			"@include bgc_radiusBox(${1:color}, ${2:radius}, $3, $4);",
+		],
+		"description": "bgc_radiusBox SCSS"
+	}
+}

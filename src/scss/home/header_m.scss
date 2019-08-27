@@ -1,0 +1,32 @@
+@import 'D:/Siykt/scss/mixin/mixin';
+
+.header {
+    @include bgcBox(#fff, 100%, 1rem);
+    z-index: 98;
+
+    .container {
+        @extend %fc;
+        @include createBox(100%, 100%);
+    }
+
+    .navbar-btn {
+        @extend %fcc;
+        margin: 0 auto 0 .34rem;
+
+        .bar {
+            @include bgc_radiusBox(#999999FF, .02rem, .32rem, .04rem);
+            margin-bottom: 0.07rem;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .pay {
+        @include cfz_fw(#fff, .3rem, 500);
+        @include bgc_radiusBox(#A476E9FF, .3rem, 1.28rem, .6rem);
+        @extend %fc;
+        margin: 0 .2rem 0 1.11rem;
+    }
+}

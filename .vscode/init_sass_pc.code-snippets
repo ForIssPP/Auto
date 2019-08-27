@@ -1,0 +1,20 @@
+{
+	"Scss-PC init": {
+		"scope": "sass",
+		"prefix": "initpc",
+		"body": [
+			"@import 'D:/Siykt/scss/mixin/mixin'",
+			"@import 'D:/Siykt/scss/mixin/deletstyle'",
+			"%fc",
+			"\t@include flexCenter\n",
+			"%fs",
+			"\t@include createFlexBox(center, flex - start, row)\n",
+			"%fcs",
+			"\t@include createFlexBox(center, flex - start)\n",
+			"%fcc",
+			"\t@include flexColumnCenter\n",
+			"$0",
+		],
+		"description": "Scss-PC init"
+	}
+}

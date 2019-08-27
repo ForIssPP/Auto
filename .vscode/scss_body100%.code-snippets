@@ -1,0 +1,13 @@
+{
+  "cfz_fw scss": {
+    "scope": "scss",
+    "prefix": "body100",
+    "body": [
+      "html, body {",
+      "\twidth: 100%;",
+      "\theight: 100%;",
+      "}",
+    ],
+    "description": "color, font-size, font-weigth SCSS"
+  }
+}

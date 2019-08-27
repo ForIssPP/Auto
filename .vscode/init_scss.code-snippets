@@ -1,0 +1,29 @@
+{
+	"Scss init": {
+		"scope": "scss",
+		"prefix": "init",
+		"body": [
+			"@import 'D:/Siykt/scss/mixin/mixin';",
+			"@import 'D:/Siykt/scss/mixin/deletstyle';",
+			"@import 'D:/Siykt/scss/mixin/responsive';\n",
+			"%fc {",
+			"\t@include flexCenter;",
+			"}\n",
+			"%fs {",
+			"\t@include createFlexBox(center, flex-start, row);",
+			"}\n",
+			"%fss {",
+			"\t@include createFlexBox(flex-start, flex-start, row);",
+			"}\n",
+			"%fcs {",
+			"\t@include createFlexBox(center, flex-start);",
+			"}\n",
+			"%fcc {",
+			"\t@include flexColumnCenter;",
+			"}\n",
+			"$0",
+			"\n@include rem(750);",
+		],
+		"description": "init Scss"
+	}
+}

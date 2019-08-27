@@ -1,0 +1,144 @@
+@import 'D:/Siykt/scss/mixin/mixin';
+@import 'D:/Siykt/scss/mixin/deletstyle';
+@import 'D:/Siykt/scss/mixin/responsive';
+$w1: 100%;
+
+%fc {
+    @include flexCenter;
+}
+
+%fs {
+    @include createFlexBox(center, flex-start, row);
+}
+
+%fcs {
+    @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+    @include flexColumnCenter;
+}
+
+.header {
+    @extend %fs;
+    justify-content: space-between;
+    height: .8rem;
+    padding: 0 0.3rem;
+
+    h3 {
+        @include cfz_fw(#333, .3rem);
+    }
+
+    input {
+        @include createBox();
+        @include cfz_fw(#999, .26rem);
+        flex: 1;
+    }
+
+    .separate {
+        @include bgcBox(#ccc, 1px, .3rem);
+        margin: 0 .28rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    button {
+        @include bgcBox(transparent, 1rem, 100%);
+        @include cfz_fw(#9D82E5, .3rem);
+    }
+}
+
+.error {
+    @include cfz_fw(#FF3434, .24rem);
+    margin: .15rem 0 .3rem .3rem;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.deposit-item {
+    $c: #000;
+    $ac: #987BE9;
+    @extend %fc;
+    flex-wrap: wrap;
+
+    li {
+        margin-bottom: .3rem;
+    }
+
+    li:nth-child(5),
+    li:nth-child(2) {
+        margin: 0 .3rem .3rem;
+    }
+
+    .item-box {
+        @include rds_borderBox(.1rem, 1px solid #ccc, 2.15rem, 1.5rem);
+        position: relative;
+        // background: url('../../images/other/m_buy_bg.png') no-repeat;
+        cursor: pointer;
+
+        &:hover {
+            @include bg_sizeBg('../../images/other/m_buy_bg_active.png', $w1, $w1);
+            border-color: transparent;
+
+            .item-box-title {
+                display: none;
+            }
+
+            .item-box-mfb,
+            .item-box-money {
+                color: $ac;
+            }
+        }
+    }
+
+    .item-box-title {
+        position: absolute;
+        right: -.1rem;
+        top: -.17rem;
+        @include createBox($w1, .34rem);
+        @include cfzti_lh(#fff, .18rem, .24rem, .34rem);
+        @include bgc_bgurl('../../images/other/m_buy_bg.png', 1.58rem, .44rem);
+    }
+
+    .item-box-mfb {
+        @include cfzta_fw($c, .26rem, center, 600);
+        line-height: 0.25rem;
+        padding-top: .38rem;
+        margin-bottom: .27rem;
+    }
+
+    .item-box-money {
+        @include cfzta_fw($c, .28rem, center, 300);
+    }
+}
+
+.pay {
+    @extend %fcc;
+    margin-top: 0.2rem;
+
+    button {
+        @include bgc_radiusBox(#D1CFCF, .5rem, 6.9rem, 1rem);
+        @include cfz_fw(#fff, .36rem);
+        box-shadow: 0.06rem .26rem .3rem 0 rgba(164, 110, 255, 0.15);
+
+        &:hover,
+        &.active {
+            background: linear-gradient(86deg, rgb(213, 171, 255) 0%, rgb(162, 119, 234) 44%);
+        }
+    }
+
+    .rule {
+        margin-top: 0.3rem;
+        @include cfz_fw(#333, .24rem);
+
+        a {
+            margin-left: .15rem;
+            @include cfz_fw(#FF3434, .24rem, 500);
+            text-decoration: underline;
+        }
+    }
+}
+
+@include rem(750, 1121, 320);

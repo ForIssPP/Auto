@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线商城</title>
+    <link rel="stylesheet" href="http://alidown.zcdanbao.com/cdn/css/_responsive_rem750.css">
+</head>
+
+<body>
+
+    <div id="app"></div>
+    <script>
+        var car_list = [];
+        var list = {$car_list}.map(function (e) {
+            e.word = e.name, e.money = e.needcoin, e.img = e.thumb;
+            return e
+        });
+        var len = list.length;
+        for (var index = 0; index < Math.ceil(len / 2); index++) {
+            list[index].length === 2 ?
+                car_list.push(list[index]) :
+                (car_list.push([list[index], list[index + 1] || {
+                    word: "敬请期待",
+                    money: "***",
+                    img: "http://alidown.zcdanbao.com/cdn/images/coming_soon.png"
+                }]), list.splice(index + 1, 1));
+        }
+    </script>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+</body>
+
+</html>

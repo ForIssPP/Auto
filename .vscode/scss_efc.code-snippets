@@ -1,0 +1,10 @@
+{
+	"efc mixin sass": {
+		"scope": "scss",
+		"prefix": "efc",
+		"body": [
+			"@extend ${1:%fc};",
+		],
+		"description": "extend SCSS"
+	}
+}

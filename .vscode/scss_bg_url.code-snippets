@@ -1,0 +1,10 @@
+{
+	"bg_url mixin sass": {
+		"scope": "scss,sass",
+		"prefix": "bg_url",
+		"body": [
+			"@include bgc_bgurl(${1:url}, $2rem, $3rem);",
+		],
+		"description": "backgroud-image SCSS"
+	}
+}

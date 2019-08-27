@@ -1,0 +1,118 @@
+@import "D:/Siykt/scss/mixin/mixin";
+@import "D:/Siykt/scss/mixin/deletstyle";
+@import "D:/Siykt/scss/mixin/responsive";
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+html,
+body {
+  @include createBox(100%, 100%);
+}
+
+body {
+  background: #131C46;
+}
+
+.container {
+  margin-top: -.2rem;
+  @extend %fcc;
+}
+
+.title {
+  position: relative;
+  padding: .33rem 0 0;
+  background: linear-gradient(171deg, rgb(33, 37, 75) 0%, rgb(64, 69, 124) 100%);
+  z-index: 2;
+  @extend %fss;
+
+  img {
+    @include createBox(3.22rem, .96rem);
+    margin: 0 .1rem;
+  }
+
+  button.btn-1 {
+    margin-right: auto;
+    @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/images/btn_1.png', 1.84rem, .73rem);
+    @include cfzta_fw(#fff, .36rem, center, 500);
+    background-color: unset;
+
+    &.active {
+      background-image: url('http://alidown.zcdanbao.com/cdn/images/btn_1_active.png');
+    }
+  }
+
+  button.btn-2 {
+    @extend button.btn-1;
+    background-image: url(http://alidown.zcdanbao.com/cdn/images/btn_2.png);
+
+    &.active {
+      background-image: url(http://alidown.zcdanbao.com/cdn/images/btn_2_active.png);
+    }
+  }
+}
+
+.curtains {
+  position: relative;
+  margin-top: -.1rem;
+  height: 0.8rem;
+  @include createBox(100%, .8rem);
+  z-index: 1;
+}
+
+.car-box {
+  margin-top: -.2rem;
+  @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/images/car_box.png', 7.14rem, 3.79rem);
+  @include createBox(7.14rem, 3.6rem);
+  background-position: 0 -.37rem;
+  @extend %fc;
+
+  .car {
+    @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/images/car_bg.png', 2.67rem, 2.72rem);
+    @extend %fcc;
+    margin-top: .1rem;
+    margin-right: .1rem;
+
+    .money {
+      @include textOverFlow(1.2rem);
+      margin-bottom: auto;
+      margin-left: .55rem;
+      @include cfz_fw(#984624, .3rem, 600);
+    }
+  }
+
+  .image-info {
+    margin-top: .29rem;
+    margin-bottom: .3rem;
+    @extend %fcc;
+
+    img {
+      width: 1.2rem;
+      max-height: 1.2rem;
+    }
+
+    p {
+      @include createBox(2rem, .32rem);
+      margin-top: 0.09rem;
+      @include cfzta_fw(#fff, .22rem, center, 500);
+      background: linear-gradient(93deg, rgba(52, 52, 136, 0) 0%, rgba(52, 52, 136, 0.97) 51%, rgba(53, 54, 138, 0) 100%);
+    }
+  }
+}

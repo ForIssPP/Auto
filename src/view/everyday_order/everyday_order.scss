@@ -1,0 +1,84 @@
+@import 'D:/Siykt/scss/mixin/mixin';
+@import 'D:/Siykt/scss/mixin/deletstyle';
+@import 'D:/Siykt/scss/mixin/responsive';
+
+%fc {
+    @include flexCenter;
+}
+
+%fs {
+    @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+    @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+    @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+    @include flexColumnCenter;
+}
+
+%w100 {
+    width: 100%;
+}
+
+body {
+    background-color: transparent;
+}
+
+#app {
+    margin: 1.5rem .8rem;
+    background-color: #fff;
+
+    >.title {
+        @extend %fc;
+
+        button {
+            margin-left: auto;
+            @include cfz_fw(red, .25rem, 500);
+            @include bgcBox(#fff, 1rem, .3rem);
+        }
+    }
+}
+
+.order-list {
+    @extend %fcc,
+    %w100;
+
+    .title {
+        @extend %w100;
+        margin: 0.4rem 0;
+    }
+
+    h3 {
+        margin-left: 0.3rem;
+        @include cfz_fw(#000, 0.18rem, 500);
+        @extend %fc;
+
+        span {
+            margin: 0 0.3rem 0 auto;
+            @include cfz_fw(red, .18rem, 500);
+        }
+    }
+
+    .images-box {
+        justify-content: space-around;
+
+        @extend %fc,
+        %w100;
+    }
+
+    .image-info {
+        img {
+            @include createBox(1rem, 1rem);
+        }
+
+        p {
+            text-align: center;
+        }
+    }
+}

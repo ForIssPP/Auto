@@ -1,0 +1,10 @@
+{
+	"cfz_fw scss": {
+		"scope": "scss",
+		"prefix": "cfz_fw",
+		"body": [
+			"@include cfz_fw(${1:#fff}, $2rem, 500);",
+		],
+		"description": "color, font-size, font-weigth SCSS"
+	}
+}

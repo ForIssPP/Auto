@@ -1,0 +1,87 @@
+@import 'D:/Siykt/scss/mixin/mixin';
+@import 'D:/Siykt/scss/mixin/deletstyle';
+@import 'D:/Siykt/scss/mixin/responsive';
+
+%fc {
+    @include flexCenter;
+}
+
+%fs {
+    @include createFlexBox(center, flex - start, row);
+}
+
+%fcs {
+    @include createFlexBox(center, flex - start);
+}
+
+%fcc {
+    @include flexColumnCenter;
+}
+
+.app {
+    @extend %fc;
+    flex-wrap: wrap-reverse;
+}
+
+.list-box {
+    position: relative;
+    margin: 0 .1rem .1rem 0;
+    cursor: pointer;
+    @extend %fc;
+
+    .list-title {
+        position: absolute;
+        top: 0.2rem;
+        width: 100%;
+        z-index: 1;
+        @extend %fc;
+
+        >img {
+            @include createBox(1.38rem, .35rem);
+            margin-right: auto;
+        }
+    }
+
+    .live-state {
+        @extend %fc;
+        position: relative;
+        @include radiusBox(.17rem, 1rem, .34rem);
+
+        p {
+            @include cfz_fw(#fff, .18rem, 500);
+            margin-left: 0.02rem;
+        }
+
+        .bg {
+            position: absolute;
+            @include bgc_radiusBox(#000, .17rem, 100%, 100%);
+            opacity: 0.32;
+            z-index: -1;
+        }
+    }
+
+    >img {
+        position: relative;
+        @include radiusBox(.2rem, 3.4rem, 3.4rem);
+        z-index: -1;
+    }
+
+    .liveinfo {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        bottom: 0.2rem;
+        @include cfz_fw(#fff, .3rem, 600);
+        @extend %fc;
+
+        .name {
+            margin: 0 auto 0 .2rem;
+        }
+
+        .hot {
+            margin-right: .2rem;
+        }
+    }
+}
+
+@include rem(750);

@@ -1,0 +1,10 @@
+{
+	"text overflow SCSS mixin sass": {
+		"scope": "scss,sass",
+		"prefix": "tof",
+		"body": [
+			"@include textOverFlow($1rem);",
+		],
+		"description": "text overflow SCSS"
+	}
+}

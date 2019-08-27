@@ -1,0 +1,10 @@
+{
+	"bgc_borderBox mixin sass": {
+		"scope": "scss,sass",
+		"prefix": "bgc_borderBox",
+		"body": [
+			"@include bgc_borderBox(${1:color}, ${2:border}, $3, $4);",
+		],
+		"description": "bgc_borderBox SCSS"
+	}
+}

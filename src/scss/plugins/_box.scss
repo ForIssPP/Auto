@@ -1,0 +1,110 @@
+@mixin createTopsBox($url: ('url': 'http://iph.href.lu/750x750',
+        'w': 7.5rem,
+        'h': 7.5rem,
+        't': 1.5rem,
+    ),
+    $title: ('c': #000,
+        'fz': .3rem,
+        'fw': 500,
+    ),
+    $nthContrl: ('n': 4,
+        'map': (flex: (0 0 .6rem, 0 0 1rem, 0 0 1rem, 0 0 1rem)),
+    ),
+    $ul: ('c': #000,
+        'fz': .28rem,
+        'ta': center,
+        'tw': 500,
+        'mt': .15rem,
+        'pw': .6rem,
+        'img': .6rem,
+    ),
+    $o: 'false',
+) {
+    .box {
+
+        %w {
+            width: 100%;
+        }
+
+        %to {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        @if(map-get($url, 'url') !='') {
+            @include bgc_bgurl(map-get($url, 'url'),
+            map-get($url, 'w'),
+            map-get($url, 'h'));
+        }
+
+        @else {
+            @include createBox(map-get($url, 'w'),
+                map-get($url, 'h'));
+        }
+
+        margin: 0 auto;
+        padding-top: map-get($url, 't');
+
+        .order {
+            @extend %fcc;
+            justify-content: flex-start;
+
+            @if ($o !='false') {
+                height: $o;
+                overflow: hidden;
+            }
+        }
+
+        .title {
+            @extend %fc,
+            %w;
+            @include cfz_fw(map-get($title, 'c'), map-get($title, 'fz'), map-get($title, 'fw'));
+
+            @include MoreNth('p', map-get($nthContrl, 'n'), map-get($nthContrl, 'map')) {
+                text-align: center;
+            }
+
+            justify-content: space-evenly;
+        }
+
+        ul {
+            @extend %w;
+
+            @if ($o !='false') {
+                overflow: auto;
+            }
+
+            .portrait {
+                @include roundBox(map-get($ul, 'pw'));
+                flex: 0 0 map-get($ul, 'pw');
+            }
+        }
+
+        li {
+            @extend %fc,
+            %w;
+            @include cfzta_fw(map-get($ul, 'c'), map-get($ul, 'fz'), center, map-get($ul, 'tw'));
+
+            @include MoreNth('p', map-get($nthContrl, 'n'), map-get($nthContrl, 'map')) {
+                text-align: center;
+            }
+
+            justify-content: space-evenly;
+            margin-top: map-get($ul, 'mt');
+            >*{
+                @extend %to;
+            }
+
+            img {
+                @include roundBox(map-get($ul, 'img'));
+            }
+
+            i {
+                @include choseList_ForMap();
+                font-style: unset;
+                flex: queryListForMap(map-get($nthContrl, 'map'), 'flex', 1);
+            }
+        }
+    }
+}

@@ -1,0 +1,157 @@
+@import "D:/Siykt/scss/mixin/mixin";
+@import "D:/Siykt/scss/mixin/deletstyle";
+@import "D:/Siykt/scss/mixin/responsive";
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+@font-face {
+  font-family: FZZJ-XSS-1;
+  src: url('./Font-FZZJ-XSS-1.ttf');
+}
+
+html,
+#app,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 13.34rem;
+}
+
+.container {
+  @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/container_bg.png', 100%, 100%);
+  @extend %fcs;
+}
+
+.row {
+  flex-flow: wrap;
+  margin-top: 4.16rem;
+  @extend %fc;
+}
+
+.text-box {
+  height: 3.3rem;
+  margin-bottom: .2rem;
+  @include cfz_fw(#000, 0.2rem, 500);
+  @extend %fss;
+
+  h3 {
+    margin-left: 0.6rem;
+    @include cfz_fw(#6373FA, .3rem, 600);
+  }
+
+  p.frist-txt {
+    margin: .35rem 0 .2rem .36rem;
+    @include cfzls_fw(#2A217A, .32rem, -3px, 500);
+    font-family: FZZJ-XSS-1;
+    @extend %fc;
+
+    img {
+      @include createBox(1.2rem, .43rem);
+      margin-top: -.15rem;
+      margin-left: .2rem;
+    }
+  }
+
+  .content-txt {
+    width: 100%;
+    margin-left: .15rem;
+    @include cfzls_fw(#C8AEFF, .27rem, -2px, 500);
+    font-family: FZZJ-XSS-1;
+    @extend %fcc;
+
+    p:first-of-type {
+      margin-bottom: .05rem;
+    }
+  }
+
+  button {
+    margin: .3rem auto 0;
+    @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/go_buy_btn_bttom.png', 2.76rem, .85rem);
+    background-color: transparent;
+
+  }
+
+  &:nth-of-type(1),
+  &:nth-of-type(3) {
+    margin-right: -.05rem;
+  }
+
+  &:nth-of-type(1),
+  &:nth-of-type(2) {
+    .content-txt {
+      color: #59F5FF;
+    }
+
+    button {
+      background-image: url('http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/go_buy_btn.png');
+    }
+  }
+
+  &:first-of-type {
+
+    .content-txt {
+      margin-left: 0;
+    }
+
+    button {
+      margin-left: .25rem;
+    }
+  }
+
+  &:last-of-type {
+    h3 {
+      margin-left: .7rem;
+    }
+
+    .frist-txt {
+      margin-left: .5rem;
+    }
+
+    button {
+      margin-right: .25rem;
+    }
+  }
+
+}
+
+$bgsize: (3.5rem 3.3rem,
+  3.3rem 3.3rem,
+  3.3rem 3.3rem,
+  3.5rem 3.3rem);
+
+@include MoreNthSiblings('.text-box', 4, (background-image: (url(http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/left_frist_box.png),
+      url(http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/right_frist_box.png),
+      url(http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/left_second_box.png),
+      url(http://alidown.zcdanbao.com/cdn/banner/images/fristCharge/right_second_box.png)),
+    background-size: $bgsize, width: (3.5rem, 3.3rem, 3.3rem, 3.5rem)));
+
+
+.btn-box {
+  @extend %fc;
+
+  button {
+    padding: 0;
+    margin: .65rem auto 0;
+    @include cfzls_fw(#8B61DA, .34rem, .05rem, 500);
+    @include bgc_radiusBox(transparent, .42rem, 5.19rem, .83rem);
+    border: 2px solid #8B60D9;
+  }
+}
