@@ -26,6 +26,12 @@ export default {
 }
 
 .loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include bgcBox(#fff, 100%, 100%);
+  z-index: 999;
+
   @keyframes three-bounce {
     0%,
     80%,
@@ -41,8 +47,7 @@ export default {
   .three-bounce {
     position: absolute;
     @extend %fc;
-    @include bgcBox(#fff, 100%, 100%);
-    z-index: 999;
+    @include createBox(100%, 100%);
 
     .child {
       @include bgc_radiusBox(rgb(157, 130, 229), 50%, 20px, 20px);
