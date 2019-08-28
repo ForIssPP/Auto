@@ -3,8 +3,8 @@
 		"scope": "scss",
 		"prefix": "initpc",
 		"body": [
-			"@import '../../scss/mixin/mixin';",
-			"@import '../../scss/mixin/deletstyle';",
+			"@import '../../scss/mixins/mixin';",
+			"@import '../../scss/mixins/deletstyle';",
 			"%fc {",
 			"\t@include flexCenter;",
 			"}\n",
