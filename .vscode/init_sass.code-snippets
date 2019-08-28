@@ -3,9 +3,9 @@
 		"scope": "sass",
 		"prefix": "init",
 		"body": [
-			"@import '../../scss/mixin/mixin'",
-			"@import '../../scss/mixin/deletstyle'",
-			"@import '../../scss/mixin/responsive'",
+			"@import '../../scss/mixins/mixin'",
+			"@import '../../scss/mixins/deletstyle'",
+			"@import '../../scss/mixins/responsive'",
 			"%fc",
 			"\t@include flexCenter",
 			"\n",
