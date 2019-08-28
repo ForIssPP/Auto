@@ -39,8 +39,12 @@ export default {
     };
   },
   methods: {
-    goRecharge: liveapi.goRecharge,
-    closeWebview: liveapi.closeWebview
+    goRecharge() {
+      liveapi.goRecharge()
+    },
+    closeWebview() {
+      liveapi.closeWebview()
+    }
   },
   components: {
     orderList,
