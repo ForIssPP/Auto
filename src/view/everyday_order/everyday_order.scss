@@ -26,47 +26,93 @@
     width: 100%;
 }
 
+html,
+#app,
+.close {
+    @include createBox(100%, 100%);
+}
+
 body {
+    @extend %fc;
+    height: 100%;
     background-color: transparent;
 }
 
 #app {
-    margin: 1.5rem .8rem;
-    background-color: #fff;
+    @extend %fcc;
+}
+
+.close {
+    position: absolute;
+    background-color: #000;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/everyday_order/content_bg.png', 5.2rem, 9.5rem);
+    margin: auto auto 2.5rem;
+    z-index: 2;
+}
+
+.content {
+    @include bgc_borderBox(#fff, .04rem solid #FFCC00, 4.81rem, 5.12rem);
+    border-radius: 0 0 .4rem .4rem;
+    overflow-x: hidden;
+    margin: auto auto .2rem;
 
     >.title {
+        margin: 0.13rem .16rem 0 .27rem;
         @extend %fc;
+        @include cfz_fw(#010101, .28rem, 500);
 
         button {
             margin-left: auto;
-            @include cfz_fw(red, .25rem, 500);
-            @include bgcBox(#fff, 1rem, .3rem);
+            @include cfz_fw(#BD5326, .28rem, 500);
+            @include radiusBox(.24rem, 1.44rem, .48rem);
+            background: linear-gradient(0, rgb(243, 184, 70), rgb(252, 246, 116));
+            box-shadow: 0 .04rem 0.02rem 0 #D7702E;
         }
     }
 }
 
+.order-list-box {
+    margin-top: 0.1rem;
+    overflow-x: auto;
+}
+
 .order-list {
+    margin-top: .4rem;
     @extend %fcc,
     %w100;
 
     .title {
         @extend %w100;
-        margin: 0.4rem 0;
+        margin-bottom: 0.38rem;
     }
 
     h3 {
-        margin-left: 0.3rem;
-        @include cfz_fw(#000, 0.18rem, 500);
+        margin-left: 0.27rem;
+        @include cfz_fw(#010101, 0.28rem, 400);
         @extend %fc;
 
         span {
-            margin: 0 0.3rem 0 auto;
-            @include cfz_fw(red, .18rem, 500);
+            margin: 0 0.27rem 0 auto;
+            @include cfz_fw(#999, .24rem, 500);
+
+
+            &.active {
+                color: #FF3434;
+            }
         }
     }
 
     .images-box {
         justify-content: space-around;
+        padding-bottom: .32rem;
+        border-bottom: 1px solid #DEDEDE;
 
         @extend %fc,
         %w100;
@@ -74,11 +120,12 @@ body {
 
     .image-info {
         img {
-            @include createBox(1rem, 1rem);
+            @include createBox(1.1rem, 1.1rem);
+            margin-bottom: 0.13rem;
         }
 
         p {
-            text-align: center;
+            @include cfzta_fw(#999, .22rem, center, 500);
         }
     }
 }
