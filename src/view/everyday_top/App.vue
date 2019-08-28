@@ -9,7 +9,10 @@
     </div>
     <div class="box">
       <div class="order">
-        <h1>活动排行</h1>
+        <div class="title-box">
+          <h1 :class="{active: view === 0}">每日幸运榜单</h1>
+          <h1 :class="{active: view === 1}">昨日幸运榜单</h1>
+        </div>
         <ul>
           <li v-for="(nolist, index) in noLists" :key="nolist.id">
             <i class="no">{{ index + 1 }}</i>
@@ -37,6 +40,7 @@ export default {
   data() {
     return {
       noLists: [],
+      view: 0,
       show: true,
       title: ruleJSON.title,
       ruleTexts: ruleJSON.text
@@ -48,12 +52,20 @@ export default {
   },
   created() {
     this.getApi(
-      "Home.ConsumeList",
+      "Home.Profitlist",
       {
         uid: getQueryVariable("uid")
       },
       res => {
-        this.noLists = res;
+        this.noLists = res.map(e => {
+          const totalcoin = e.totalcoin;
+          if (1e8 > totalcoin && totalcoin > 1e6) {
+            e.totalcoin = Math.ceil(totalcoin / 1e3) / 10 + '万'
+          } else if (1e8 < totalcoin) {
+            e.totalcoin = Math.ceil(totalcoin / 1e7) / 10 + '亿'
+          }
+          return e
+        });
         this.show = false;
       },
       err => {
