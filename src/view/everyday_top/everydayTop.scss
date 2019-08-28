@@ -19,36 +19,108 @@
   @include createFlexBox(center, flex-start);
 }
 
+%fsc {
+  @include createFlexBox(flex-start, center, column);
+}
+
 %fcc {
   @include flexColumnCenter;
 }
 
+body {
+  padding-bottom: 1.4rem;
+  background-color: #32115E;
+}
+
+.top {
+  @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/everyday_top/content_bg.png', 100%, 6.33rem);
+}
+
+.rule-box {
+  @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/everyday_top/rule_bg.png', 100%, 5.54rem);
+  overflow-x: hidden;
+
+  .rule {
+    padding: 0 .5rem;
+    @extend %fsc;
+  }
+
+  h1.title {
+    margin: .15rem 0 .1rem;
+    @include cfz_fw(#fff, .36rem, 500);
+  }
+
+  .rule-text {
+    @include cfzlh_fw(#fff, .22rem, .4rem, 300);
+  }
+
+  .text-ellipsis {
+    @include createBox(6.53rem, 3.83rem);
+    margin: .85rem auto 0;
+    overflow-x: hidden;
+  }
+}
+
 $url: ('url': '',
-  'w': 6.47rem,
-  'h': 10.13rem,
-  't': 1.4rem,
+  'w': 6.9rem,
+  'h': 7.48rem,
+  't': 0,
 );
 
 $title: ('c': #27035EFF,
   'fz': .3rem,
   'fw': 500,
 );
-$flexText: 0 0 20%;
-$nthContrl: ('n': 5,
-  'map': (flex: ($flexText, 0 0 .6rem, $flexText, $flexText, $flexText)),
+$flexText: 0 0 15%;
+$nthContrl: ('n': 4,
+  'map': (flex: ($flexText, 0 0 .8rem, 0 0 35%, 0 0 25%)),
 );
 
-$ul: ('c': #000,
-  'fz': .28rem,
+$ul: ('c': #fff,
+  'fz': .3rem,
   'tw': 500,
-  'mt': .15rem,
-  'pw': .6rem,
-  'flex': ($flexText, 0 0 .6rem, $flexText, $flexText, $flexText),
-  'img': .6rem
-);
+  'mt': .3rem,
+  'pw': .8rem,
+  'flex': ($flexText, 0 0 .8rem, 0 0 35%, 0 0 25%),
+  'img': .8rem);
 
 @include createTopsBox($url, $title, $nthContrl, $ul, $o: 7.36rem);
 
 .box {
-  margin-top: -.7rem;
+  background: linear-gradient(0deg, rgb(96, 18, 193), rgb(120, 41, 237));
+  box-shadow: 0 .07rem .27rem 0 rgb(72, 15, 159), inset 0 0 .68rem 0 rgb(218, 198, 255);
+  border-radius: 0.2rem;
+
+  h1 {
+    @include bgc_radiusBox(rgb(70, 15, 156), .23rem, 2.97rem);
+    margin-top: 0.3rem;
+    padding: .2rem 0;
+    @include cfzls_fw(#fff, .36rem, 0.1rem, 700);
+    background: rgba(70, 15, 156, 1);
+    @extend %fc;
+  }
+
+  li i {
+    color: #2DFFDA;
+  }
+
+  ul {
+    padding-bottom: .85rem;
+  }
+
+  p:last-of-type {
+    text-align: left !important;
+    padding-right: .3rem;
+
+    span {
+      display: inline-block;
+      margin-right: 0.1rem;
+      @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/static/mfb.png', .27rem, .27rem);
+    }
+  }
+
+  .user-name {
+    text-align: left !important;
+    padding-left: .3rem;
+  }
 }

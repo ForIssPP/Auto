@@ -1,24 +1,24 @@
 <template>
   <div id="app">
     <loading :show="show"></loading>
-    <!-- <div class="top"></div> -->
-    <!-- <div class="rule"></div> -->
+    <div class="top"></div>
+    <div class="rule-box">
+      <div class="text-ellipsis">
+        <rule :title="title" :ruleTexts="ruleTexts"></rule>
+      </div>
+    </div>
     <div class="box">
       <div class="order">
-        <div class="title">
-          <p>排行</p>
-          <p>头像</p>
-          <p>名字</p>
-          <p>ID</p>
-          <p>魔法值</p>
-        </div>
+        <h1>活动排行</h1>
         <ul>
           <li v-for="(nolist, index) in noLists" :key="nolist.id">
             <i class="no">{{ index + 1 }}</i>
             <img class="portrait" :src="nolist.avatar" @error="imageGetError($event)" />
             <p class="user-name">{{ nolist.user_nicename }}</p>
-            <p class="uid">{{ nolist.uid }}</p>
-            <p>{{ nolist.totalcoin }}</p>
+            <p>
+              <span></span>
+              {{ nolist.totalcoin }}
+            </p>
           </li>
         </ul>
       </div>
@@ -30,12 +30,16 @@ import getApi from "../../modules/getApi";
 import getQueryVariable from "../../modules/getQueryVariable";
 import imageGetError from "../../modules/imageGetError";
 import loading from "../page/loading.vue";
+import rule from "./rule.vue";
+import ruleJSON from "./rule.json";
 
 export default {
   data() {
     return {
       noLists: [],
-      show: true
+      show: true,
+      title: ruleJSON.title,
+      ruleTexts: ruleJSON.text
     };
   },
   methods: {
@@ -53,12 +57,13 @@ export default {
         this.show = false;
       },
       err => {
-        console.log(err);
+        layer.msg(err.msg || "服务器请求错误，请稍后再试");
       }
     );
   },
   components: {
-    loading
+    loading,
+    rule
   }
 };
 </script>
