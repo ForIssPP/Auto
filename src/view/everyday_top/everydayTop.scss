@@ -27,6 +27,11 @@
   @include flexColumnCenter;
 }
 
+@font-face {
+  font-family: hylx;
+  src: url(./hylx.ttf);
+}
+
 body {
   padding-bottom: 1.4rem;
   background-color: #32115E;
@@ -63,7 +68,7 @@ body {
 
 $url: ('url': '',
   'w': 6.9rem,
-  'h': 7.48rem,
+  'h': 10.59rem,
   't': 0,
 );
 
@@ -79,16 +84,15 @@ $nthContrl: ('n': 4,
 $ul: ('c': #fff,
   'fz': .3rem,
   'tw': 500,
-  'mt': .3rem,
+  'mt': .32rem,
   'pw': .8rem,
   'flex': ($flexText, 0 0 .8rem, 0 0 35%, 0 0 25%),
   'img': .8rem);
 
-@include createTopsBox($url, $title, $nthContrl, $ul, $o: 7.36rem);
+@include createTopsBox($url, $title, $nthContrl, $ul, $o: 10.36rem);
 
 .box {
-  background: linear-gradient(0deg, rgb(96, 18, 193), rgb(120, 41, 237));
-  box-shadow: 0 .07rem .27rem 0 rgb(72, 15, 159), inset 0 0 .68rem 0 rgb(218, 198, 255);
+  border: 0.08rem solid #0fffff;
   border-radius: 0.2rem;
 
   .title-box {
@@ -97,8 +101,9 @@ $ul: ('c': #fff,
 
   h1 {
     margin-top: 0.3rem;
-    padding: .2rem 0;
-    @include cfzls_fw(#fff, .36rem, 0.1rem, 700);
+    padding: .14rem 0;
+    @include cfzlh_fw(#fff, .36rem, .48rem, 500);
+    font-family: hylx;
     @include rds_borderBox(.23rem, .06rem solid transparent, 2.97rem);
     opacity: 0.22;
     @extend %fc;
@@ -114,7 +119,7 @@ $ul: ('c': #fff,
   }
 
   ul {
-    padding-bottom: .85rem;
+    padding-bottom: .1rem;
   }
 
   p:last-of-type {
@@ -131,5 +136,38 @@ $ul: ('c': #fff,
   .user-name {
     text-align: left !important;
     padding-left: .3rem;
+  }
+}
+
+.box.month {
+  @include bgc_bgurl('http://alidown.zcdanbao.com/cdn/banner/images/everyday_top/month_bg.png', 7.44rem, 5.75rem);
+  border: unset;
+
+  .order {
+    width: 6rem;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 1.05rem;
+  }
+
+  li {
+    margin-top: .3rem;
+
+    img {
+      margin-left: .8rem;
+    }
+
+    p {
+      flex: 0 0 25%;
+
+      &:last-of-type {
+        padding-right: 0;
+        padding-left: .3rem;
+      }
+    }
+
+    .user-name {
+      padding: 0;
+    }
   }
 }

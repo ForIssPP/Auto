@@ -10,8 +10,8 @@
     <div class="box">
       <div class="order">
         <div class="title-box">
-          <h1 :class="{active: view === 0}">每日幸运榜单</h1>
-          <h1 :class="{active: view === 1}">昨日幸运榜单</h1>
+          <h1 :class="{active: !view}" @click="toggle(0)">每日幸运榜单</h1>
+          <h1 :class="{active: view}" @click="toggle(1)">昨日幸运榜单</h1>
         </div>
         <ul>
           <li v-for="(nolist, index) in noLists" :key="nolist.id">
@@ -26,6 +26,20 @@
         </ul>
       </div>
     </div>
+    <div class="box month">
+      <div class="order">
+        <ul>
+          <li v-for="(list, index) in monthList" :key="index">
+            <img :src="list.avatar" alt="user-avatar" @error="imageGetError($event)" />
+            <p class="user-name">{{ list.user_nicename }}</p>
+            <p>
+              <span></span>
+              {{ list.totalcoin }}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -35,11 +49,14 @@ import imageGetError from "../../modules/imageGetError";
 import loading from "../page/loading.vue";
 import rule from "./rule.vue";
 import ruleJSON from "./rule.json";
+import ellipsisRes from "./ellipsisRes";
 
 export default {
   data() {
     return {
       noLists: [],
+      monthList: [],
+      oldList: [],
       view: 0,
       show: true,
       title: ruleJSON.title,
@@ -48,30 +65,55 @@ export default {
   },
   methods: {
     getApi,
-    imageGetError
+    imageGetError,
+    toggle(index) {
+      this.view = index;
+      const arr = this.noLists;
+      this.noLists = this.oldList;
+      this.oldList = arr;
+    }
   },
   created() {
+    const uid = getQueryVariable("uid");
+
     this.getApi(
       "Home.Profitlist",
       {
-        uid: getQueryVariable("uid")
+        uid
       },
       res => {
-        this.noLists = res.map(e => {
-          const totalcoin = e.totalcoin;
-          if (1e8 > totalcoin && totalcoin > 1e6) {
-            e.totalcoin = Math.ceil(totalcoin / 1e3) / 10 + '万'
-          } else if (1e8 < totalcoin) {
-            e.totalcoin = Math.ceil(totalcoin / 1e7) / 10 + '亿'
-          }
-          return e
-        });
+        this.noLists = ellipsisRes(res);
         this.show = false;
       },
       err => {
         layer.msg(err.msg || "服务器请求错误，请稍后再试");
       }
-    );
+    )
+      .getApi(
+        "Home.ProfitNewList",
+        {
+          uid
+        },
+        res => {
+          this.oldList = ellipsisRes(res);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+      .getApi(
+        "Home.ProfitNewList",
+        {
+          uid,
+          type: "month"
+        },
+        res => {
+          this.monthList = ellipsisRes(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   },
   components: {
     loading,
