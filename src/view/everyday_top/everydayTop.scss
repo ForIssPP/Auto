@@ -96,6 +96,7 @@ $ul: ('c': #fff,
   border-radius: 0.2rem;
 
   .title-box {
+    min-height: 1.2rem;
     @extend %fc;
   }
 
@@ -158,7 +159,7 @@ $ul: ('c': #fff,
     }
 
     p {
-      flex: 0 0 25%;
+      flex: 0 0 30%;
 
       &:last-of-type {
         padding-right: 0;
@@ -168,6 +169,7 @@ $ul: ('c': #fff,
 
     .user-name {
       padding: 0;
+      flex: 0 0 20%;
     }
   }
 }

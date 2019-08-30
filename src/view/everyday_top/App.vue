@@ -77,9 +77,10 @@ export default {
     const uid = getQueryVariable("uid");
 
     this.getApi(
-      "Home.Profitlist",
+      "Home.ProfitNewList",
       {
-        uid
+        uid,
+        type: "day"
       },
       res => {
         this.noLists = ellipsisRes(res);
@@ -92,7 +93,7 @@ export default {
       .getApi(
         "Home.ProfitNewList",
         {
-          uid
+          uid,
         },
         res => {
           this.oldList = ellipsisRes(res);
