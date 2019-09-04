@@ -1,0 +1,22 @@
+@import '../../scss/mixins/mixin';
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
