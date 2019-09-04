@@ -16,6 +16,7 @@ import btnClick from "../everyday_order/btnClick.vue";
 import liveapi from "../../modules/live.api";
 import getQueryVariable from "../../modules/getQueryVariable";
 import CHARGE_CONFIG from "./charge.config.json";
+import CHARGE_APPSTORE_CONFIG from "./charge_appstore.config.json";
 
 export default {
   data() {
@@ -47,6 +48,11 @@ export default {
   components: {
     textBox,
     btnClick
+  },
+  created() {
+    if (getQueryVariable("type") === "appstore") {
+      this.infos = CHARGE_APPSTORE_CONFIG;
+    }
   }
 };
 </script>
