@@ -3,7 +3,7 @@ module.exports = {
         require('precss'),
         require('autoprefixer')({
             overrideBrowserslist: [
-                ">0.1%"
+                ">0.01%"
             ]
         })
     ]
