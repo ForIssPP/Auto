@@ -1,0 +1,19 @@
+{
+  "vue init": {
+    "scope": "vue",
+    "prefix": "init",
+    "body": [
+      "<template>",
+      "<div>",
+      "",
+      "</div>",
+      "</template>",
+      "<script>",
+      "export default {",
+      "",
+      "}",
+      "</script>",
+    ],
+    "description": "init vue"
+  }
+}
