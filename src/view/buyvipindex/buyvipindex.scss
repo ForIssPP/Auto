@@ -68,15 +68,15 @@
 
 }
 
-#imgSwiper {
-  .swiper-slide {
-    width: auto;
-    padding: 0 .15rem;
-  }
-
+#contentSwiper {
   .img-box {
     @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/car_bg.png", 4.61rem, 4.86rem);
-    @extend %fcc;
+    @extend %fcs;
+    margin: 0 auto;
+
+    .gift {
+      margin: 1.16rem 0 .6rem;
+    }
   }
 }
 
@@ -94,11 +94,12 @@
     @include cfz_fw(#9C896E, .36rem, 500);
 
     &.swiper-slide-active {
-      color: #E3C597;
+      @include c_fw(#E3C597, 600);
     }
   }
 }
 
-.title-box {
+.top {
+  position: absolute;
   @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/title_bg.png", 100%, 5.49rem);
 }

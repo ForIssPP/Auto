@@ -34,6 +34,7 @@ module.exports = merge(config, {
     externals: {
         vue: 'Vue',
         jquery: 'jQuery',
+        swiper: 'Swiper'
     },
     optimization: {
         minimizer: [
