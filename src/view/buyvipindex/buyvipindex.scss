@@ -1,4 +1,5 @@
 @import '../../scss/mixins/mixin';
+@import '../../scss/mixins/deletstyle';
 
 %fc {
   @include flexCenter;
@@ -20,3 +21,84 @@
   @include flexColumnCenter;
 }
 
+.rule {
+  @extend %fc;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.swiper-content {
+  .title {
+    @extend %fc;
+    margin: .5rem 0 0.65rem;
+
+    span {
+      margin: 0 .2rem;
+      @include cfz_fw(#E3C597, .36rem, 500);
+    }
+  }
+}
+
+.buy {
+  position: fixed;
+  bottom: 0;
+  @include createBox(100%, 1.3rem);
+  background-color: #fff;
+  box-shadow: 0 0.02rem .2rem .03rem #d2d2d2;
+  z-index: 999;
+
+  .buy-box {
+    @extend %fc;
+    height: 100%;
+    padding: 0 .3rem;
+  }
+
+  .text-box {
+    margin-right: auto;
+    @include cfz_fw(#746965, .3rem, 500);
+  }
+
+  .buy-btn {
+    @include radiusBox(.45rem, 2.56rem, .9rem);
+    @include cfzls_fw(#E3C597, .4rem, 0.05rem, 500);
+    background-color: rgb(59, 61, 66);
+    background: linear-gradient(0deg, rgb(59, 61, 66) 0%, rgb(73, 76, 79) 100%);
+  }
+
+
+}
+
+#imgSwiper {
+  .swiper-slide {
+    width: auto;
+    padding: 0 .15rem;
+  }
+
+  .img-box {
+    @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/car_bg.png", 4.61rem, 4.86rem);
+    @extend %fcc;
+  }
+}
+
+#titleSwiper {
+  width: 7rem;
+  margin-bottom: 0.5rem;
+
+  .swiper-wrapper {
+    margin: 0 auto;
+  }
+
+  .swiper-slide {
+    width: auto;
+    margin: .33rem .16rem .12rem;
+    @include cfz_fw(#9C896E, .36rem, 500);
+
+    &.swiper-slide-active {
+      color: #E3C597;
+    }
+  }
+}
+
+.title-box {
+  @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/title_bg.png", 100%, 5.49rem);
+}
