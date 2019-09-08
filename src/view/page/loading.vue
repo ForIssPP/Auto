@@ -1,10 +1,10 @@
 <template>
   <div class="loading" v-if="show">
     <div class="three-bounce">
-        <div class="child bounce1"></div>
-        <div class="child bounce2"></div>
-        <div class="child bounce3"></div>
-        <noscript>您的浏览器不支持JavaScript脚本或未开启JavaScript脚本</noscript>
+      <div class="child bounce1"></div>
+      <div class="child bounce2"></div>
+      <div class="child bounce3"></div>
+      <noscript>您的浏览器不支持JavaScript脚本或未开启JavaScript脚本</noscript>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '../../scss/mixins/mixin';
+@import "../../scss/mixins/mixin";
 
 %fc {
   @include flexCenter;
@@ -30,7 +30,7 @@ export default {
   top: 0;
   left: 0;
   @include bgcBox(#fff, 100%, 100%);
-  z-index: 999;
+  z-index: 999999;
 
   @keyframes three-bounce {
     0%,
