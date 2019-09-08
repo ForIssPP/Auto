@@ -1,6 +1,6 @@
 <template>
   <div class="rule-box">
-    <img :src="imgSrc" />
+    <img v-if="imgSrc" :src="imgSrc" />
     <h3>{{ title }}</h3>
     <p>{{ text }}</p>
   </div>
@@ -49,6 +49,7 @@ export default {
 .rule-box {
   @extend %fcc;
   margin-bottom: 0.7rem;
+  @include createBox(2rem, 2.51rem);
 
   img {
     margin-bottom: 0.3rem;

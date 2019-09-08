@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <loading :show="loading"></loading>
     <div class="top"></div>
     <div class="content">
       <div class="swiper-content">
@@ -17,23 +18,23 @@
           <div class="swiper-wrapper">
             <div v-for="(slide, index) in vipRuleList" :key="index" class="swiper-slide">
               <imgBox :gift="slide[index].gift" :name="slide[index].name"></imgBox>
-              <div class="title">
-                <img src="http://alidown.zcdanbao.com/cdn/other/vip/title_img.png" />
-                <span>贵族专属权益</span>
-                <img src="http://alidown.zcdanbao.com/cdn/other/vip/title_img.png" />
-              </div>
-              <div class="content">
-                <div class="rule">
-                  <rule
-                    v-for="(slideProps, index) in slide"
-                    :key="index"
-                    :imgSrc="slideProps.imgSrc"
-                    :text="slideProps.text"
-                    :title="slideProps.title"
-                  ></rule>
-                </div>
-              </div>
             </div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="title">
+            <img src="http://alidown.zcdanbao.com/cdn/other/vip/title_img.png" />
+            <span>贵族专属权益</span>
+            <img src="http://alidown.zcdanbao.com/cdn/other/vip/title_img.png" />
+          </div>
+          <div class="rule">
+            <rule
+              v-for="(slideProps, index) in vipRuleConentList"
+              :key="index"
+              :imgSrc="slideProps && slideProps.imgSrc"
+              :text="slideProps && slideProps.text"
+              :title="slideProps && slideProps.title"
+            ></rule>
           </div>
         </div>
       </div>
@@ -53,19 +54,23 @@ import imgBox from "./imgBox.vue";
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
 import getQueryVariable from "../../modules/getQueryVariable";
+import loading from "../page/loading.vue";
 
 export default {
   data() {
     return {
+      loading: true,
       vipRuleList: [],
       vipNameList: [],
       vipBuyTextsList: [],
+      vipRuleConentList: [],
       buyTexts: ["100/月 赠送8000魔法币", "续费可获得1w魔法币"]
     };
   },
   components: {
     rule,
     imgBox,
+    loading,
     btnSwiper
   },
   methods: {
@@ -108,6 +113,7 @@ export default {
     }
   },
   created() {
+    document.body.style.overflow = "hide";
     this.getApi(
       "vipindex",
       {
@@ -129,6 +135,7 @@ export default {
           reList[3] = obj;
           return reList;
         });
+
         // vip购买展示内容
         this.vipBuyTextsList = res.info.list.map(e => {
           let coin = e.coin / 100 > 9999 ? e.coin / 1e6 + "w" : e.coin / 100;
@@ -138,7 +145,11 @@ export default {
             e.id
           ];
         });
-        console.log(this.vipBuyTextsList);
+
+        // Frist 特权列表
+        this.vipRuleConentList = this.vipRuleList[0].reverse();
+
+        console.log(this.vipRuleList);
         this.$nextTick(() => {
           let thar = this;
 
@@ -179,6 +190,7 @@ export default {
             loop: true,
             slidesPerView: "auto",
             centeredSlides: true,
+            slideToClickedSlide: true,
             loopedSlides: 6,
             controller: {
               control: contentSwiper
@@ -186,11 +198,21 @@ export default {
             on: {
               slideChangeTransitionEnd() {
                 thar.buyTexts = thar.vipBuyTextsList[this.realIndex];
+                let list = JSON.parse(
+                  JSON.stringify(thar.vipRuleList[this.realIndex].reverse())
+                );
+                if (list.length % 3) {
+                  list.length += 3 - (list.length % 3);
+                }
+                thar.vipRuleConentList = list;
               }
             }
           });
 
           contentSwiper.controller.control = titleSwiper;
+
+          document.body.style.overflow = "auto";
+          this.loading = false;
         });
       },
       err => {

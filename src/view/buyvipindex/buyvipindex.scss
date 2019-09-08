@@ -45,7 +45,7 @@
   @include createBox(100%, 1.3rem);
   background-color: #fff;
   box-shadow: 0 0.02rem .2rem .03rem #d2d2d2;
-  z-index: 999;
+  z-index: 998;
 
   .buy-box {
     @extend %fc;
@@ -69,6 +69,11 @@
 }
 
 #contentSwiper {
+
+  .swiper-slide {
+    width: auto;
+  }
+
   .img-box {
     @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/car_bg.png", 4.61rem, 4.86rem);
     @extend %fcs;
@@ -76,6 +81,17 @@
 
     .gift {
       margin: 1.16rem 0 .6rem;
+
+      img {
+        @include createBox(3rem, 2rem);
+      }
+
+    }
+
+    .name {
+      img {
+        @include createBox(2.56rem, .36rem);
+      }
     }
   }
 }
@@ -102,4 +118,8 @@
 .top {
   position: absolute;
   @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/title_bg.png", 100%, 5.49rem);
+}
+
+.content {
+  margin-bottom: 1rem;
 }
