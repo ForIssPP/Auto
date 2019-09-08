@@ -2,7 +2,6 @@ node_modules/
 **/other
 **.code-workspace
 **.log
-package.json
 package-lock.json
 yarn.lock
 dist/
