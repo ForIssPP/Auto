@@ -1,0 +1,152 @@
+@import '../../scss/mixins/mixin';
+@import '../../scss/mixins/deletstyle';
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fssc {
+  @include createFlexBox(flex-start, flex-start);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+$c: #F4F4F4;
+
+.bar {
+  @extend %fs;
+  padding: .3rem;
+  background-color: #fff;
+
+  h2 {
+    margin-right: auto;
+    @include cfz_fw(#000, .32rem, 600);
+  }
+
+  p {
+    @include cfz_fw(#999999, .28rem, 500);
+
+    span {
+      color: #ff3434;
+    }
+  }
+}
+
+.title-box {
+  width: 100%;
+  padding-bottom: .3rem;
+  background-color: $c;
+
+  .avatar-title {
+    @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/title_bg_charge.png", 100%, 3.94rem);
+    @extend %fcc;
+  }
+
+
+  .avatar {
+    position: relative;
+    @extend %fcc;
+
+    .bg {
+      position: absolute;
+      @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/avatar_bg.png", 1.68rem, 1.68rem);
+    }
+
+    img {
+      @include roundBox(1.43rem);
+    }
+  }
+
+  .userinfo {
+    p {
+      @include cfzta_fw(#9C896E, .28rem, center, 500);
+      opacity: 0.6;
+    }
+
+    .username {
+      margin: .3rem 0 .15rem;
+      @include fz_fw(.36rem, 600);
+      opacity: 1;
+    }
+  }
+
+}
+
+.list-box {
+  width: 100%;
+
+  #choseBox {
+    width: 100%;
+  }
+}
+
+.chose-box {
+  @extend %fc;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+
+  li {
+    margin-bottom: 0.3rem;
+    color: #999;
+    @include bgc_radiusBox($c, .1rem, 2.1rem, 2.1rem);
+    @extend %fcc;
+
+    img {
+      @include createBox(1.06rem, 1rem);
+    }
+
+    h3 {
+      margin: .2rem 0 .1rem;
+      @include fz_fw(.24rem, 600);
+    }
+
+    p {
+      @include fz_fw(.2rem, 500);
+    }
+
+    &:nth-of-type(3n-1) {
+      margin: 0 .3rem .3rem;
+    }
+
+    &.active {
+      color: #4E2900;
+      border: .02rem solid rgb(220, 183, 125);
+      @include bgc_shadowBox(#fff, 0 0 .2rem 0 #ffd690, 2.06rem, 2.06rem);
+    }
+  }
+}
+
+.buy {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  @include bgc_shadowBox(#fff, 0 -1px .2rem 0 #d0d0d0, 100%, 1.87rem);
+  z-index: 99;
+  @extend %fssc;
+
+  .red-bar {
+    margin: .25rem 0 .15rem .3rem;
+    @include cfz_fw(#FF3434, .24rem, 500);
+  }
+
+  .btn {
+    margin: 0 auto;
+    @include cfz_fw(#4E2900, .36rem, 600);
+    @include radiusBox(.45rem, 6.9rem, .9rem);
+    background: linear-gradient(90deg, #DEBE86 0%, #C29A4F 100%);
+  }
+}

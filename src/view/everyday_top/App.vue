@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <loading :show="show"></loading>
+    <timer></timer>
     <div class="top"></div>
     <div class="rule-box">
       <div class="text-ellipsis">
@@ -13,7 +14,7 @@
           <h1 :class="{active: !view}" @click="toggle(0)">每日幸运榜单</h1>
           <h1 :class="{active: view}" @click="toggle(1)">昨日幸运榜单</h1>
         </div>
-        <ul>
+        <ul v-if="noLists.length > 0">
           <li v-for="(nolist, index) in noLists" :key="nolist.id">
             <i class="no">{{ index + 1 }}</i>
             <img class="portrait" :src="nolist.avatar" @error="imageGetError($event)" />
@@ -24,11 +25,14 @@
             </p>
           </li>
         </ul>
+        <ul v-else>
+          <li style="margin-top: 1rem">暂时无人上榜，敬请期待~！</li>
+        </ul>
       </div>
     </div>
     <div class="box month">
       <div class="order">
-        <ul>
+        <ul v-if="monthList.length > 0">
           <li v-for="(list, index) in monthList" :key="index">
             <img :src="list.avatar" alt="user-avatar" @error="imageGetError($event)" />
             <p class="user-name">{{ list.user_nicename }}</p>
@@ -37,6 +41,9 @@
               {{ list.totalcoin }}
             </p>
           </li>
+        </ul>
+        <ul v-else>
+          <li style="margin-top: 1rem">暂时无人上榜，敬请期待~！</li>
         </ul>
       </div>
     </div>
@@ -50,6 +57,7 @@ import loading from "../page/loading.vue";
 import rule from "./rule.vue";
 import ruleJSON from "./rule.json";
 import ellipsisRes from "./ellipsisRes";
+import timer from '../page/timer.vue';
 
 export default {
   data() {
@@ -67,10 +75,12 @@ export default {
     getApi,
     imageGetError,
     toggle(index) {
-      this.view = index;
-      const arr = this.noLists;
-      this.noLists = this.oldList;
-      this.oldList = arr;
+      if (this.view !== index) {
+        this.view = index;
+        const arr = this.noLists;
+        this.noLists = this.oldList;
+        this.oldList = arr;
+      }
     }
   },
   created() {
@@ -93,7 +103,7 @@ export default {
       .getApi(
         "Home.ProfitNewList",
         {
-          uid,
+          uid
         },
         res => {
           this.oldList = ellipsisRes(res);
@@ -118,7 +128,8 @@ export default {
   },
   components: {
     loading,
-    rule
+    rule,
+    timer
   }
 };
 </script>

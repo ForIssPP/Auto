@@ -1,17 +1,106 @@
-[
-  "开通特效",
-  "尊贵名片",
-  "尊贵礼物",
-  "贵族勋章",
-  "进场欢迎",
-  "加速升级",
-  "聊天背景颜色",
-  "聊天边框",
-  "全站喇叭",
-  "开播通知",
-  "开通续费通知",
-  "专属坐骑",
-  "防被踢",
-  "防禁言",
-  "神秘人"
+[{
+    "title": "开通特效",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "直播间进场横幅",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "尊贵名片",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "尊贵身份 彰显身份",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "尊贵礼物",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "贵族专享 特别礼物",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "贵族勋章",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "$1身份专属勋章",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "进场欢迎",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "进场显示贵族身份",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "加速升级",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "快速提高等级",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "聊天背景颜色",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "炫酷背景 与众不同",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "聊天边框",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "聊天内容更突出",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "全站喇叭",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "发出后全站可见",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "开播通知",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "开播房间内通知",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "续费通知",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "续费时全站广播",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "专属坐骑",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "坐骑进场 霸气十足",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "防被踢",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "任性至极 防止被踢",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "防禁言",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "任性至极 防止禁言",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  },
+  {
+    "title": "神秘人",
+    "imgSrc": "https://iph.href.lu/160x140",
+    "text": "隐藏身份 放心跑骚",
+    "gift": "http://alidown.zcdanbao.com/cdn/other/vip/test_gif.gif",
+    "name": "http://alidown.zcdanbao.com/cdn/other/vip/title_name_0.png"
+  }
 ]
