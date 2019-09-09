@@ -45,16 +45,14 @@
   </div>
 </template>
 <script>
-import getApi from "../../modules/getApi";
-import { goRecharge } from "../../modules/live.api";
 import btnSwiper from "./btnSwiper.vue";
 import vipRule from "./vip_rule.json";
 import rule from "./rule.vue";
 import imgBox from "./imgBox.vue";
 import Swiper from "swiper";
-import "swiper/dist/css/swiper.min.css";
 import getQueryVariable from "../../modules/getQueryVariable";
 import loading from "../page/loading.vue";
+import getApi from "./getApiFromBuyVipIndex";
 
 export default {
   data() {
@@ -74,42 +72,11 @@ export default {
     btnSwiper
   },
   methods: {
-    goRecharge,
-    getApi(type, data, resolve, reject) {
-      $.ajax({
-        url: `./index.php?g=appapi&m=Mall&a=${type}`,
-        data,
-        type: "GET",
-        dataType: "json",
-        success(res) {
-          res && resolve ? resolve(res) : reject(res);
-        },
-        error(e) {
-          console.log(e);
-        }
-      });
-      return this;
-    },
-    buyvip(vipid) {
-      this.getApi(
-        "buyvip",
-        {
-          uid: getQueryVariable("uid"),
-          token: getQueryVariable("token"),
-          vipid: vipid
-        },
-        res => {
-          console.log(res);
-          if (res.code === 1024) {
-            this.goRecharge();
-          } else {
-            layer.msg(res.msg);
-          }
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    getApi,
+    buyvip(id) {
+      if (window) {
+        window.location.href = `/index.php?chose=${id}`;
+      }
     }
   },
   created() {
@@ -124,6 +91,7 @@ export default {
         this.vipNameList = res.info.list.map(e => {
           return e.name;
         });
+
         // vip规则列表
         this.vipRuleList = res.info.list.map(e => {
           let obj = JSON.parse(JSON.stringify(vipRule[3]));
@@ -140,7 +108,7 @@ export default {
         this.vipBuyTextsList = res.info.list.map(e => {
           let coin = e.coin / 100 > 9999 ? e.coin / 1e6 + "w" : e.coin / 100;
           return [
-            `${coin}￥/月 赠送${e.coin * 0.8}魔法币`,
+            `${coin}￥/月 赠送${(e.coin * 0.8) / 1e4}w魔法币`,
             `续费可获得${e.coin / 1e4}w魔法币`,
             e.id
           ];
@@ -149,7 +117,6 @@ export default {
         // Frist 特权列表
         this.vipRuleConentList = this.vipRuleList[0].reverse();
 
-        console.log(this.vipRuleList);
         this.$nextTick(() => {
           let thar = this;
 
