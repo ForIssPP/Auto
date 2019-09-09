@@ -1,0 +1,27 @@
+@import '../../scss/mixins/mixin';
+@import '../../scss/mixins/deletstyle';
+@import '../../scss/mixins/responsive';
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+
+
+@include rem(750);
