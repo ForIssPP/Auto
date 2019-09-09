@@ -1,9 +1,10 @@
 <template>
   <div class="avatar-title">
-    <div class="bg"></div>
+    <div class="avatar">
+      <div class="bg"></div>
+      <img v-if="imgSrc" :src="imgSrc" alt="avatar" />
+    </div>
     <div class="userinfo">
-      <img :src="imgSrc" alt="avatar" class="avatar" />
-      <div class="uid" v-if="uid">{{ uid }}</div>
       <p v-if="username" class="username">{{ username }}</p>
       <p v-for="(item, index) in other" :key="index">{{ item }}</p>
     </div>
