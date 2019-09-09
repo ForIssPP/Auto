@@ -25,6 +25,8 @@
   @extend %fc;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 100%;
+  padding-bottom: .3rem;
 }
 
 .swiper-content {
@@ -60,12 +62,10 @@
 
   .buy-btn {
     @include radiusBox(.45rem, 2.56rem, .9rem);
-    @include cfzls_fw(#E3C597, .4rem, 0.05rem, 500);
+    @include cfzls_fw(#E3C597, .4rem, 0.03rem, 500);
     background-color: rgb(59, 61, 66);
     background: linear-gradient(0deg, rgb(59, 61, 66) 0%, rgb(73, 76, 79) 100%);
   }
-
-
 }
 
 #contentSwiper {
@@ -121,5 +121,6 @@
 }
 
 .content {
+  width: 100%;
   margin-bottom: 1rem;
 }

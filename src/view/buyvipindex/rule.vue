@@ -48,8 +48,7 @@ export default {
 
 .rule-box {
   @extend %fcc;
-  margin-bottom: 0.7rem;
-  @include createBox(2rem, 2.51rem);
+  @include createBox(2rem, 3.2rem);
 
   img {
     margin-bottom: 0.3rem;
