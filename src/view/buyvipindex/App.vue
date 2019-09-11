@@ -75,7 +75,9 @@ export default {
     getApi,
     buyvip(id) {
       if (window) {
-        window.location.href = `/index.php?chose=${id}`;
+        window.location.href = `/index.php?g=appapi&m=Mall&a=buyvipcharge&uid=${getQueryVariable(
+          "uid"
+        )}&token=${getQueryVariable("token")}&chose=${id}`;
       }
     }
   },
@@ -108,8 +110,8 @@ export default {
         this.vipBuyTextsList = res.info.list.map(e => {
           let coin = e.coin / 100 > 9999 ? e.coin / 1e6 + "w" : e.coin / 100;
           return [
-            `${coin}￥/月 赠送${(e.coin * 0.8) / 1e4}w魔法币`,
-            `续费可获得${e.coin / 1e4}w魔法币`,
+            `${coin}￥/月 赠送${(e.coin * 0.8) / 1e4}万魔法币`,
+            `续费可获得${e.coin / 1e4}万魔法币`,
             e.id
           ];
         });
