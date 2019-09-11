@@ -52,18 +52,21 @@ $c: #F4F4F4;
   background-color: $c;
 
   .avatar-title {
-    @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/title_bg_charge.png", 100%, 3.94rem);
+    @include bgc_bgurl("http://image.mjlive-app.com/page/buyvipindexcharge/title_bg_charge.png", 100%, 3.94rem);
     @extend %fcc;
   }
 
 
   .avatar {
     position: relative;
+    @include createBox(1.68rem, 1.68rem);
     @extend %fcc;
 
     .bg {
       position: absolute;
-      @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/avatar_bg.png", 1.68rem, 1.68rem);
+      top: 0;
+      left: 0;
+      @include bgc_bgurl("http://image.mjlive-app.com/page/buyvipindexcharge/avatar_bg.png", 100%, 100%);
     }
 
     img {
@@ -98,12 +101,14 @@ $c: #F4F4F4;
   @extend %fc;
   flex-wrap: wrap;
   padding-bottom: 2rem;
+  $w: 2.1rem;
 
   li {
     margin-bottom: 0.3rem;
     color: #999;
-    @include bgc_radiusBox($c, .1rem, 2.1rem, 2.1rem);
+    @include bgc_radiusBox($c, .1rem, $w, $w);
     @extend %fcc;
+    border: .02rem solid $c;
 
     img {
       @include createBox(1.06rem, 1rem);
@@ -124,8 +129,9 @@ $c: #F4F4F4;
 
     &.active {
       color: #4E2900;
-      border: .02rem solid rgb(220, 183, 125);
-      @include bgc_shadowBox(#fff, 0 0 .2rem 0 #ffd690, 2.06rem, 2.06rem);
+      border-color: rgb(220, 183, 125);
+      box-shadow: 0 0 .2rem 0 #ffd690;
+      background-color: #fff;
     }
   }
 }
