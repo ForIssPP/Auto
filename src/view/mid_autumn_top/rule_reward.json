@@ -12,5 +12,12 @@
     "三天累计赠送礼物魔法币达100-200w，送7天VIP圣骑试用，坐骑马车试用7天",
     "三天累计赠送礼物魔法币达200w以上，送7天VIP伯爵试用，坐骑金鱼试用15天",
     "注意事项：<span style=\"color: red\">1、用户奖励需在活动结束三天内在活动H5页面领取，过期作废2、活动奖励不可重复领取，按照最高一级领取</span>"
+  ],
+  "receivedImagesSrc": [
+    "http://image.mjlive-app.com/page/mid_autumn_top/chose_1.png",
+    "http://image.mjlive-app.com/page/mid_autumn_top/chose_2.png",
+    "http://image.mjlive-app.com/page/mid_autumn_top/chose_3.png",
+    "http://image.mjlive-app.com/page/mid_autumn_top/sz.png",
+    "http://image.mjlive-app.com/page/mid_autumn_top/alert.png"
   ]
 }

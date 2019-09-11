@@ -60,7 +60,7 @@ $title: ('c': #CC8811,
 );
 
 $img: .6rem;
-$flexTextMap: (flex: (0 0 .6rem, 0 0 $img, 0 0 1rem, 0 0 1rem, 0 0 1rem));
+$flexTextMap: (flex: (0 0 .7rem, 0 0 .7rem, 0 0 20%, 0 0 20%, 0 0 20%));
 $nthContrl: ('n': 5,
   'map': $flexTextMap,
 );
@@ -78,10 +78,18 @@ $ul: ('c': #fff,
 .box {
   .title {
     padding: 0.7rem 0 .1rem;
+
+    p:nth-child(2) {
+      margin: 0 .3rem;
+    }
   }
 
   li:first-child {
     margin-top: .3rem;
+  }
+
+  .portrait {
+    margin: 0 .3rem;
   }
 }
 
@@ -131,4 +139,17 @@ $ul: ('c': #fff,
       background-image: url("http://image.mjlive-app.com/page/mid_autumn_top/btn_bg_active.png");
     }
   }
+}
+
+#alert {
+  display: none;
+  @include createBox(5.4rem, 3.2rem);
+
+  img {
+    @include createBox(100%, 100%);
+  }
+}
+
+div.layui-layer-page {
+  background: transparent;
 }
