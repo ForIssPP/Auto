@@ -25,8 +25,15 @@
       ></ChoseBox>
     </div>
     <div class="buy">
-      <div v-if="endTimer" class="red-bar">开通奖励{{ reward }}魔法币，预计到期时间{{ endTimer }}</div>
-      <btnClick :className="'btn'" :name="'1万魔法币 立即支付'" @btnClick="buyvip(chose + 1)"></btnClick>
+      <div
+        v-if="endTimer"
+        class="red-bar"
+      >开通奖励{{ reward }}魔法币{{ endTimer ? '，预计到期时间' + endTimer : '。' }}</div>
+      <btnClick
+        :className="'btn'"
+        :name="`${reward / 0.8 / 1e4}万魔法币 立即支付`"
+        @btnClick="buyvip(chose + 1)"
+      ></btnClick>
     </div>
   </div>
 </template>
@@ -46,7 +53,7 @@ export default {
       day: rule.day,
       imgSrc: "",
       name: "",
-      uid: getQueryVariable("uid") || 10000,
+      uid: getQueryVariable("uid") || "10000",
       usevip: ["暂未开通"],
       reward: 8000,
       endTimer: "",
@@ -82,6 +89,9 @@ export default {
           if (res.code === 1024) {
             this.goRecharge();
           } else {
+            this.money -= this.reward / 0.8;
+            console.log(this.info)
+            this.usevip = ["已经开通" + this.info.list[parseInt(vipid) - 1].name];
             layer.msg(res.msg);
           }
         },
@@ -120,6 +130,11 @@ export default {
         this.reward = info.list[choseVar].coin * 0.8;
         // 保存数据
         this.info = info;
+        if (parseInt(info.uservip) > 0) {
+          this.usevip = [
+            "已经开通" + info.list[parseInt(info.uservip) - 1].name
+          ];
+        }
       },
       err => {
         console.log(err);
