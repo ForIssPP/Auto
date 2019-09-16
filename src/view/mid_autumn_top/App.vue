@@ -33,15 +33,21 @@
       <p class="received-money">我的魔法币账户累计： {{ money / 1e4 }}万</p>
       <btnClick :name="''" :className="btnActive" @btnClick="received"></btnClick>
     </div>
-    <div id="rule">
-      <div class="rule-box">
-        <div class="text-ellipsis">
-          <rule :title="rewardTitle" :ruleTexts="rewardTextList"></rule>
-        </div>
-      </div>
+    <div id="ruleBtn">
+      <btnClick :name="''" @btnClick="openRuleDom"></btnClick>
     </div>
     <div id="alert">
       <img :src="alertSrc" />
+    </div>
+    <div id="ruleDom">
+      <div class="bg"></div>
+      <rule :title="ruleTitle" :ruleTexts="ruleTexts"></rule>
+      <footer>
+        <p>注意事项：</p>
+        <p>1、用户奖励需在活动结束三天内在H5页面领取，过期作废。</p>
+        <p>2、上班主播每日开播时长需≥3小时</p>
+      </footer>
+      <btnClick :name="''" @btnClick="closeRuleDom" :className="'close-layer'"></btnClick>
     </div>
   </div>
 </template>
@@ -64,7 +70,7 @@ export default {
       rewardTitle: rewardJSON.title,
       rewardTextList: rewardJSON.text,
       tops: [],
-      titleList: ["排行", "头像", "名字", "ID", "魔法值"],
+      titleList: ["排行", "头像", "名字", "ID", "月光值"],
       rewardText: "暂无可领取奖励",
       lock: true,
       btnActive: "received-btn ok",
@@ -72,7 +78,8 @@ export default {
       receivedImageSrc: "",
       receivedMsg: "",
       alertSrc: rewardJSON.receivedImagesSrc[4],
-      money: 0
+      money: 0,
+      layerIndex: 0
     };
   },
   methods: {
@@ -116,6 +123,18 @@ export default {
           console.log(err);
         }
       );
+    },
+    openRuleDom() {
+      this.layerIndex = layer.open({
+        title: "",
+        type: 1,
+        content: $("#ruleDom"),
+        area: ["6.9rem", "9.84rem"],
+        closeBtn: 0
+      });
+    },
+    closeRuleDom() {
+      layer.close(this.layerIndex);
     }
   },
   components: {
