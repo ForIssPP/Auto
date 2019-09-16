@@ -31,10 +31,10 @@
       </div>
       <p class="received-text">{{ rewardText }}</p>
       <p class="received-money">我的魔法币账户累计： {{ money / 1e4 }}万</p>
-      <btnClick :name="''" :className="btnActive" @btnClick="received"></btnClick>
+      <btnClick :name="''" :className="btnActive" @click="received"></btnClick>
     </div>
     <div id="ruleBtn">
-      <btnClick :name="''" @btnClick="openRuleDom"></btnClick>
+      <btnClick :name="''" @click="openRuleDom"></btnClick>
     </div>
     <div id="alert">
       <img :src="alertSrc" />
@@ -47,7 +47,7 @@
         <p>1、用户奖励需在活动结束三天内在H5页面领取，过期作废。</p>
         <p>2、上班主播每日开播时长需≥3小时</p>
       </footer>
-      <btnClick :name="''" @btnClick="closeRuleDom" :className="'close-layer'"></btnClick>
+      <btnClick :name="''" @click="closeRuleDom" :className="'close-layer'"></btnClick>
     </div>
   </div>
 </template>
@@ -185,7 +185,7 @@ export default {
                 ];
               this.receivedType = 1;
             } else if (res.prize.signPrize) {
-              this.rewardText = "坐骑扫帚(7天) x 1";
+              this.rewardText = "坐骑扫帚(3天) x 1";
               this.receivedImageSrc = rewardJSON.receivedImagesSrc[3];
             } else {
               this.btnActive = "received-btn";
