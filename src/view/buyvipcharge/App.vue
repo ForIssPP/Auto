@@ -32,7 +32,7 @@
       <btnClick
         :className="'btn'"
         :name="`${reward / 0.8 / 1e4}万魔法币 立即支付`"
-        @btnClick="buyvip(chose + 1)"
+        @click="buyvip(chose + 1)"
       ></btnClick>
     </div>
   </div>
