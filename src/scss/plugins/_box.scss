@@ -64,8 +64,6 @@
             @include MoreNth('p', map-get($nthContrl, 'n'), map-get($nthContrl, 'map')) {
                 text-align: center;
             }
-
-            justify-content: space-evenly;
         }
 
         ul {
@@ -89,8 +87,6 @@
             @include MoreNth('p', map-get($nthContrl, 'n'), map-get($nthContrl, 'map')) {
                 text-align: center;
             }
-
-            justify-content: space-evenly;
             margin-top: map-get($ul, 'mt');
             >*{
                 @extend %to;

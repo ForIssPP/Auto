@@ -153,3 +153,52 @@ $ul: ('c': #fff,
 div.layui-layer-page {
   background: transparent;
 }
+
+#ruleBtn {
+  position: absolute;
+  top: 6.26rem;
+  right: 0;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule_bg.png", 1.59rem, .63rem);
+
+  button {
+    @include createBox(100%, 100%);
+    background-color: transparent;
+  }
+}
+
+#ruleDom {
+  display: none;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule_dom_bg.png", 5.32rem, 9.84rem);
+  padding: 0 .85rem 0 .73rem;
+  background-size: contain;
+  @extend %fcs;
+
+  .title {
+    @extend %fc;
+    padding: .67rem 0 .35rem;
+
+    img {
+      @include createBox(1.84rem, .39rem)
+    }
+  }
+
+  p {
+    @include cfzta_fw(#fff, .24rem, justify, 500);
+    line-height: .45rem;
+  }
+
+  footer {
+    margin-top: .2rem;
+    p {
+      color: #FF2626;
+    }
+  }
+}
+
+.close-layer {
+  position: absolute;
+  top: .39rem;
+  right: .48rem;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule_dom_close.png", .48rem, .48rem);
+  background-color: transparent;
+}
