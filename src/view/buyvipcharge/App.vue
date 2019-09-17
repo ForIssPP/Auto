@@ -89,8 +89,7 @@ export default {
           if (res.code === 1024) {
             this.goRecharge();
           } else {
-            this.money -= this.reward / 0.8;
-            console.log(this.info)
+            this.money = parseInt(res.info.coin);
             this.usevip = ["已经开通" + this.info.list[parseInt(vipid) - 1].name];
             layer.msg(res.msg);
           }
