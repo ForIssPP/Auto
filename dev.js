@@ -10,6 +10,7 @@ module.exports = merge(config, {
         contentBase: './dist',
         disableHostCheck: true,
         hot: true,
+        port: 8080,
         host: 'loc.mjliveapp.com',
     },
     plugins: [

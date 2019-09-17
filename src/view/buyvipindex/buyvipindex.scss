@@ -78,7 +78,7 @@
   }
 
   .img-box {
-    @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/car_bg.png", 4.61rem, 4.86rem);
+    @include bgc_bgurl("http://image.mjlive-app.com/page/vip/car_bg.png", 4.61rem, 4.86rem);
     @extend %fcs;
     margin: 0 auto;
 
@@ -120,7 +120,7 @@
 
 .top {
   position: absolute;
-  @include bgc_bgurl("http://alidown.zcdanbao.com/cdn/other/vip/title_bg.png", 100%, 5.49rem);
+  @include bgc_bgurl("http://image.mjlive-app.com/page/vip/title_bg.png", 100%, 5.49rem);
 }
 
 .content {

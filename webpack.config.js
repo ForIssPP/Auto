@@ -42,6 +42,18 @@ module.exports = {
                 
             },
             {
+                test: /\.(svga)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'svga/[name].[ext]'
+                        }
+                    },
+                ],
+                
+            },
+            {
                 test: /\.(html)$/,
                 exclude: /^node_modules$/,
                 use: {

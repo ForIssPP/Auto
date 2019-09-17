@@ -1,4 +1,6 @@
 @import '../../scss/mixins/mixin';
+@import '../../scss/mixins/deletstyle';
+@import '../../scss/plugins/box';
 
 %fc {
   @include flexCenter;
@@ -18,4 +20,185 @@
 
 %fcc {
   @include flexColumnCenter;
+}
+
+body {
+  background-color: #060A23;
+}
+
+#rule {
+  display: none;
+}
+
+.top {
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/top.jpg", 100%, 11.02rem);
+}
+
+.reward-img {
+  margin-top: -1px;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/reward.png", 100%, 3.74rem);
+}
+
+.reward-rule-img {
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule.png", 100%, 5.72rem);
+}
+
+.box-title-img {
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/top_title_bg.png", 5rem, .34rem);
+  margin: .8rem auto .2rem;
+}
+
+$url: ('url': 'http://image.mjlive-app.com/page/mid_autumn_top/top_bg.png',
+  'w': 6.9rem,
+  'h': 6.6rem,
+  't': 0,
+);
+
+$title: ('c': #CC8811,
+  'fz': .3rem,
+  'fw': 600,
+);
+
+$img: .6rem;
+$flexTextMap: (flex: (0 0 .7rem, 0 0 .7rem, 0 0 20%, 0 0 20%, 0 0 20%));
+$nthContrl: ('n': 5,
+  'map': $flexTextMap,
+);
+
+$ul: ('c': #fff,
+  'fz': .24rem,
+  'tw': 500,
+  'mt': .4rem,
+  'pw': $img,
+  'flex': $flexTextMap,
+  'img': $img);
+
+@include createTopsBox($url, $title, $nthContrl, $ul, $o: 5.08rem);
+
+.box {
+  .title {
+    padding: 0.7rem 0 .1rem;
+
+    p:nth-child(2) {
+      margin: 0 .3rem;
+    }
+  }
+
+  li:first-child {
+    margin-top: .3rem;
+  }
+
+  .portrait {
+    margin: 0 .3rem;
+  }
+}
+
+.received {
+  margin-top: 0.7rem;
+  @extend %fcc;
+
+  .img-box {
+    margin-bottom: .25rem;
+    position: relative;
+    @include createBox(3.03rem, 3.03rem);
+
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/reward_bg.png", 100%, 100%);
+    }
+
+    img {
+      display: block;
+      @include createBox(1.65rem, 1.34rem);
+      margin: .5rem auto 0;
+    }
+  }
+
+  >p {
+    @include fz_fw(.3rem, 500);
+  }
+
+  .received-text {
+    margin-bottom: .2rem;
+    color: #F2B055;
+  }
+
+  .received-money {
+    margin-bottom: .5rem;
+    color: #fff;
+  }
+
+  .received-btn {
+    margin-bottom: 1.75rem;
+    @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/btn_bg.png", 2.88rem, .8rem);
+    background-color: transparent;
+
+    &.ok {
+      background-image: url("http://image.mjlive-app.com/page/mid_autumn_top/btn_bg_active.png");
+    }
+  }
+}
+
+#alert {
+  display: none;
+  @include createBox(5.4rem, 3.2rem);
+
+  img {
+    @include createBox(100%, 100%);
+  }
+}
+
+div.layui-layer-page {
+  background: transparent;
+}
+
+#ruleBtn {
+  position: absolute;
+  top: 6.26rem;
+  right: 0;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule_bg.png", 1.59rem, .63rem);
+
+  button {
+    @include createBox(100%, 100%);
+    background-color: transparent;
+  }
+}
+
+#ruleDom {
+  display: none;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule_dom_bg.png", 5.32rem, 9.84rem);
+  padding: 0 .85rem 0 .73rem;
+  background-size: contain;
+  @extend %fcs;
+
+  .title {
+    @extend %fc;
+    padding: .67rem 0 .35rem;
+
+    img {
+      @include createBox(1.84rem, .39rem)
+    }
+  }
+
+  p {
+    @include cfzta_fw(#fff, .24rem, justify, 500);
+    line-height: .45rem;
+  }
+
+  footer {
+    margin-top: .2rem;
+    p {
+      color: #FF2626;
+    }
+  }
+}
+
+.close-layer {
+  position: absolute;
+  top: .39rem;
+  right: .48rem;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mid_autumn_top/rule_dom_close.png", .48rem, .48rem);
+  background-color: transparent;
 }
