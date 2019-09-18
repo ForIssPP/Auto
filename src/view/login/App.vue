@@ -61,8 +61,9 @@ export default {
           id: "login_container",
           appid: "wxc28657982564c9a3",
           scope: "snsapi_login",
-          // redirect_uri: "http%3a%2f%2fm.mjlive-app.com%2findex.php%3fg%3dAppapi%26m%3dLogin%26a%3dtestlogin"
-          redirect_uri: "http%3a%2f%2fm.mjlive-app.com%2f"
+          redirect_uri:
+            "https%3a%2f%2fm.mjlive-app.com%2findex.php%3fg%3dAppapi%26m%3dLogin%26a%3dtestlogin"
+          // redirect_uri: "http%3a%2f%2fm.mjlive-app.com%2f"
         });
       } catch (err) {
         console.log(err);
@@ -74,8 +75,25 @@ export default {
           function(response) {
             if (response.status === "connected") {
               FB.api("/me", function(response) {
-                console.log("Successful login for: " + response.name);
-                console.log(response);
+                $.ajax({
+                  url:
+                    "/api/public/appapi/?service=Login.UserLoginByThird&source=loginIndex",
+                  data: {
+                    openid: response.id,
+                    type: "facebook",
+                    nicename: response.name
+                  },
+                  success: res => {
+                    let { avatar, user_nicename } = res.data.info[0];
+                    this.avatar = avatar;
+                    this.name = user_nicename;
+                    alert(this.avatar);
+                    alert(this.name);
+                  },
+                  error(e) {
+                    alert(e);
+                  }
+                });
               });
             } else {
               console.log("该用户没有登录");
@@ -142,14 +160,16 @@ export default {
     }
   },
   created() {
-    $.getScript("http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js");
+    $.getScript(
+      "https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"
+    );
   },
   mounted() {
     if (getQueryVariable("code")) {
       const code = getQueryVariable("code");
       $.ajax({
         type: "GET",
-        url: "http://m.mjlive-app.com:10141",
+        url: "https://m.mjlive-app.com:10141",
         data: {
           code
         },

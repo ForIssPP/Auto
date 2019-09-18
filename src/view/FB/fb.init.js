@@ -8,7 +8,7 @@ export default (function (d, s, id) {
 })(document, "script", "facebook-jssdk");
 window.fbAsyncInit = function () {
   FB.init({
-    appId: "610033166141581",
+    appId: "304655050450749",
     cookie: true, // 启用cookie
     xfbml: true, // 解析此页面上的社交插件
     version: "v2.8" // 使用图形api 2.8版本
