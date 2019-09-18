@@ -13,11 +13,10 @@
             </div>
           </div>
         </div>
-
         <div id="contentSwiper" class="swiper-container">
           <div class="swiper-wrapper">
-            <div v-for="(slide, index) in vipRuleList" :key="index" class="swiper-slide">
-              <imgBox :gift="slide[index].gift" :name="slide[index].name"></imgBox>
+            <div v-for="(slide, index) in vipGift" :key="index" class="swiper-slide">
+              <imgBox :gift="slide.gift" :name="slide.name" :id="'vipRuleList' + (index + 1)"></imgBox>
             </div>
           </div>
         </div>
@@ -50,19 +49,24 @@ import vipRule from "./vip_rule.json";
 import rule from "./rule.vue";
 import imgBox from "./imgBox.vue";
 import Swiper from "swiper";
+import vipGift from "./vip_gift.json";
 import getQueryVariable from "../../modules/getQueryVariable";
+import imageGetError from "../../modules/imageGetError";
 import loading from "../page/loading.vue";
 import getApi from "./getApiFromBuyVipIndex";
-
+import SVGA from "svgaplayerweb";
+import OnLoadImages from "../../modules/onLoadImages";
+// 贵族中心
 export default {
   data() {
     return {
+      vipGift,
       loading: true,
       vipRuleList: [],
       vipNameList: [],
       vipBuyTextsList: [],
       vipRuleConentList: [],
-      buyTexts: ["100/月 赠送8000魔法币", "续费可获得1w魔法币"]
+      buyTexts: ["1万魔法币/月 赠送0.8万魔法币", "续费可获得1万魔法币"]
     };
   },
   components: {
@@ -83,6 +87,10 @@ export default {
   },
   created() {
     document.body.style.overflow = "hide";
+    let imgs = [];
+    vipRule.forEach(e => {
+      imgs.push(e.imgSrc);
+    });
     this.getApi(
       "vipindex",
       {
@@ -108,9 +116,14 @@ export default {
 
         // vip购买展示内容
         this.vipBuyTextsList = res.info.list.map(e => {
-          let coin = e.coin / 100 > 9999 ? e.coin / 1e6 + "w" : e.coin / 100;
+          let coin =
+            e.coin / 1e4 >= 100 ? e.coin / 1e6 + "百万" : e.coin / 1e4 + "万";
+          let coin_zs =
+            (e.coin * 0.8) / 1e4 >= 100
+              ? (e.coin * 0.8) / 1e6 + "百万"
+              : (e.coin * 0.8) / 1e4 + "万";
           return [
-            `${coin}￥/月 赠送${(e.coin * 0.8) / 1e4}万魔法币`,
+            `${coin}魔法币/月 赠送${coin_zs}魔法币`,
             `续费可获得${e.coin / 1e4}万魔法币`,
             e.id
           ];
@@ -120,15 +133,19 @@ export default {
         this.vipRuleConentList = this.vipRuleList[0].reverse();
 
         this.$nextTick(() => {
+          new OnLoadImages(...imgs).onload(() => {
+            this.loading = false;
+            document.body.style.overflow = "auto";
+          });
+
           let thar = this;
 
           let contentSwiper = new Swiper("#contentSwiper", {
-            loop: true,
             // 开启滑动参数
             watchSlidesProgress: true,
             slidesPerView: "auto",
+            slideToClickedSlide: true,
             centeredSlides: true,
-            loopedSlides: 6,
             on: {
               progress(progress) {
                 const len = this.slides.length;
@@ -156,11 +173,9 @@ export default {
           });
 
           let titleSwiper = new Swiper("#titleSwiper", {
-            loop: true,
             slidesPerView: "auto",
             centeredSlides: true,
             slideToClickedSlide: true,
-            loopedSlides: 6,
             controller: {
               control: contentSwiper
             },
@@ -177,11 +192,8 @@ export default {
               }
             }
           });
-
+          // 双重控制
           contentSwiper.controller.control = titleSwiper;
-
-          document.body.style.overflow = "auto";
-          this.loading = false;
         });
       },
       err => {

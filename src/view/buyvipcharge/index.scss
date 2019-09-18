@@ -76,7 +76,7 @@ $c: #F4F4F4;
 
   .userinfo {
     p {
-      @include cfzta_fw(#9C896E, .28rem, center, 500);
+      @include cfzta_fw(#E5AF68, .28rem, center, 500);
       opacity: 0.6;
     }
 
@@ -111,11 +111,12 @@ $c: #F4F4F4;
     border: .02rem solid $c;
 
     img {
-      @include createBox(1.06rem, 1rem);
+      margin-top: -.2rem;
+      @include createBox(1.4rem, 1.4rem);
     }
 
     h3 {
-      margin: .2rem 0 .1rem;
+      margin-bottom: .05rem;
       @include fz_fw(.24rem, 600);
     }
 
@@ -129,8 +130,8 @@ $c: #F4F4F4;
 
     &.active {
       color: #4E2900;
-      border-color: rgb(220, 183, 125);
-      box-shadow: 0 0 .2rem 0 #ffd690;
+      border-color: #E5AF68;
+      box-shadow: 0 0 .1rem 0 #FDBE4F;
       background-color: #fff;
     }
   }
@@ -151,8 +152,8 @@ $c: #F4F4F4;
 
   .btn {
     margin: 0 auto;
-    @include cfz_fw(#4E2900, .36rem, 600);
+    @include cfz_fw(#E5AF68, .36rem, 600);
     @include radiusBox(.45rem, 6.9rem, .9rem);
-    background: linear-gradient(90deg, #DEBE86 0%, #C29A4F 100%);
+    background: linear-gradient(0deg, rgb(59, 61, 66) 0%, rgb(73, 76, 79) 100%);
   }
 }

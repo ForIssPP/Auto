@@ -41,7 +41,7 @@
 }
 // 文本显示控制
 @mixin textOverFlow($w: auto) {
-    @include createBox($w);
+    width: $w;
     white-space: nowrap; 
     text-overflow: ellipsis;
     overflow: hidden;

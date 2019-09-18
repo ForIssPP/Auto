@@ -77,26 +77,41 @@ export default {
       this.reward = this.info.list[index].coin * 0.8;
     },
     buyvip(vipid) {
-      this.getApi(
-        "buyvip",
+      let name = this.info.list[parseInt(vipid) - 1].name;
+      layer.confirm(
+        `购买贵族${name}，将花费${this.reward / 0.8}魔法币`,
         {
-          uid: this.uid,
-          token: getQueryVariable("token"),
-          vipid: vipid
+          title: "确认购买",
+          btn: ["确认", "取消"],
+          closeBtn: 0
         },
-        res => {
-          console.log(res);
-          if (res.code === 1024) {
-            this.goRecharge();
-          } else {
-            this.money -= this.reward / 0.8;
-            console.log(this.info)
-            this.usevip = ["已经开通" + this.info.list[parseInt(vipid) - 1].name];
-            layer.msg(res.msg);
-          }
+        index => {
+          this.getApi(
+            "buyvip",
+            {
+              uid: this.uid,
+              token: getQueryVariable("token"),
+              vipid: vipid
+            },
+            res => {
+              console.log(res);
+              if (res.code === 1024) {
+                this.goRecharge();
+              } else {
+                this.money = parseInt(res.info.coin);
+                this.usevip = ["已经开通" + name];
+                layer.msg(res.msg);
+                layer.close(index);
+              }
+            },
+            err => {
+              console.log(err);
+            }
+          );
         },
-        err => {
-          console.log(err);
+        index => {
+          layer.msg("取消购买");
+          layer.close(index);
         }
       );
     }
