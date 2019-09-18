@@ -80,25 +80,25 @@
   .swiper-slide {
     width: auto;
   }
+}
 
-  .img-box {
-    @include bgc_bgurl("http://image.mjlive-app.com/page/vip/car_bg.png", 4.61rem, 4.86rem);
-    @extend %fcs;
-    margin: 0 auto;
+.img-box {
+  @include bgc_bgurl("http://image.mjlive-app.com/page/vip/car_bg.png", 4.61rem, 4.86rem);
+  @extend %fcs;
+  margin: 0 auto;
 
-    .gift {
-      margin-top: .6rem;
+  .gift {
+    margin-top: .6rem;
 
-      img,
-      .svga-box {
-        @include createBox(3rem, 3rem);
-      }
+    img,
+    .svga-box {
+      @include createBox(3rem, 3rem);
     }
+  }
 
-    .name {
-      img {
-        @include createBox(2.56rem, .36rem);
-      }
+  .name {
+    img {
+      @include createBox(2.55rem, .33rem);
     }
   }
 }
