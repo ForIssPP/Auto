@@ -68,8 +68,9 @@ body,
 }
 
 .bottom {
+  position: absolute;
   width: 100%;
-  margin-top: 4.48rem;
+  bottom: .3rem;
   @extend %fc;
 }
 

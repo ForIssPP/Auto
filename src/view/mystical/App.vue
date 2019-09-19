@@ -68,6 +68,13 @@ export default {
   created() {
     const uid = query("uid");
     const token = query("token");
+    if (uid === "630690") {
+      layer.open({
+        type: 0,
+        title: "专属彩蛋",
+        content: "你瞧, 我藏了个彩蛋！"
+      })
+    }
     getApi(
       "User.MysticalIndex",
       {
