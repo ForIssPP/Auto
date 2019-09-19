@@ -44,6 +44,7 @@ import rule from "./rule.json";
 import getApi from "../buyvipindex/getApiFromBuyVipIndex";
 import btnClick from "../page/btnClick.vue";
 import ChoseBox from "./ChoseBox.vue";
+import { goRecharge } from "../../modules/live.api";
 
 export default {
   data() {
@@ -114,7 +115,8 @@ export default {
           layer.close(index);
         }
       );
-    }
+    },
+    goRecharge
   },
   mounted() {
     this.getApi(

@@ -1,5 +1,5 @@
 <template>
-  <div class="loading" v-if="show">
+  <div class="loading" v-show="show">
     <div class="three-bounce">
       <div class="child bounce1"></div>
       <div class="child bounce2"></div>
