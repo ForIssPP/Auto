@@ -1,8 +1,8 @@
 <template>
   <div class="img-box">
     <div class="gift">
-      <img :src="gift" />
-      <!-- <div :id="id" class="svga-box" ref="svgaBox"></div> -->
+      <img v-if="!SVGAOnload" :src="gift" />
+      <SvgaBox v-show="SVGAOnload" :svgaSrc="vipSvga[id]" :active="active" @SVGAOnload="svgaPlayer"></SvgaBox>
     </div>
     <div class="name">
       <img :src="name" />
@@ -10,9 +10,17 @@
   </div>
 </template>
 <script>
-// import SVGA from "svgaplayerweb";
+import SVGA from "svgaplayerweb";
+import vipSvga from "./vip_svga.json";
+import SvgaBox from "./SVGA.vue";
 
 export default {
+  data() {
+    return {
+      SVGAOnload: false,
+      vipSvga
+    };
+  },
   props: {
     gift: {
       type: String,
@@ -23,26 +31,24 @@ export default {
       default: ""
     },
     id: {
-      type: String,
-      default: ""
+      type: Number,
+      default: 0
+    },
+    active: {
+      type: Number,
+      default: 2
     }
   },
-  methods: {
-    // svgaPlayer(el) {
-    //   try {
-    //     let player = new SVGA.Player(el);
-    //     let parser = new SVGA.Parser(el);
-    //     parser.load(this.gift, videoItem => {
-    //       player.setVideoItem(videoItem);
-    //       player.startAnimation();
-    //     });
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
+  components: {
+    SvgaBox
   },
-  mounted() {
-    // this.svgaPlayer(`#${this.id}`);
+  methods: {
+    svgaPlayer(ok) {
+      if (ok) {
+        this.SVGAOnload = ok;
+        return;
+      }
+    }
   }
 };
 </script>
