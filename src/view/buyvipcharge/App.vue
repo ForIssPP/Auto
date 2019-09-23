@@ -26,9 +26,8 @@
     </div>
     <div class="buy">
       <div
-        v-if="endTimer"
         class="red-bar"
-      >开通奖励{{ reward }}魔法币{{ endTimer ? '，预计到期时间' + endTimer : '。' }}</div>
+      >开通奖励 {{ reward }} 魔法币，{{ endTimer ? `预计到期时间 ${endTimer}` : `使用有效期${day}天` }}</div>
       <btnClick
         :className="'btn'"
         :name="`${reward / 0.8 / 1e4}万魔法币 立即支付`"
@@ -95,7 +94,6 @@ export default {
               vipid: vipid
             },
             res => {
-              console.log(res);
               if (res.code === 1024) {
                 this.goRecharge();
               } else {
