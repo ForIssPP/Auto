@@ -43,10 +43,7 @@ export default {
         `您将花费${money}魔法币，购买坐骑${name}`,
         {
           title: "提示",
-          btn: ["取消", "确定"]
-        },
-        index => {
-          layer.close(index);
+          btn: ["确定", "取消"]
         },
         index => {
           $.ajax({
@@ -67,7 +64,8 @@ export default {
               layer.close(index);
             }
           });
-        }
+        },
+        index => layer.close(index)
       );
     },
     toggle(type) {
