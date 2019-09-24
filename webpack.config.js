@@ -31,27 +31,23 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.(woff|woff2|eot|ttf|otf|TTF|EOT|WOFF)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'font/[name].[ext]'
-                        }
-                    },
-                ],
-                
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: 'font/[name].[ext]'
+                    }
+                }, ],
+
             },
             {
                 test: /\.(svga)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'svga/[name].[ext]'
-                        }
-                    },
-                ],
-                
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: 'svga/[name].[ext]'
+                    }
+                }, ],
+
             },
             {
                 test: /\.(html)$/,
@@ -65,6 +61,17 @@ module.exports = {
                 exclude: /^node_modules$/,
                 use: {
                     loader: 'vue-loader'
+                }
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /^node_modules$/,
+                loader: 'babel-loader?cacheDirectory=true',
+                options: {
+                    presets: [
+                        "@babel/react",
+                        "@babel/env"
+                    ]
                 }
             }
         ]

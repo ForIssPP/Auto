@@ -8,3 +8,4 @@ dist/
 .DS_Store
 src/index.html
 src/index.js
+**/study
