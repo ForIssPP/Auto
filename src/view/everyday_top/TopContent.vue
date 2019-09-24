@@ -10,12 +10,17 @@
   </li>
 </template>
 <script>
+import imageGetError from "../../modules/imageGetError";
+
 export default {
   props: {
     index: Number,
     avatar: String,
     name: String,
     totalcoin: [String, Number]
+  },
+  methods: {
+    imageGetError
   }
 };
 </script>

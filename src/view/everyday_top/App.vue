@@ -15,14 +15,13 @@
 <script>
 import getApi from "../../modules/getApi";
 import getQueryVariable from "../../modules/getQueryVariable";
-import imageGetError from "../../modules/imageGetError";
 import loading from "../page/loading.vue";
 import rule from "./rule.vue";
 import ruleJSON from "./rule.json";
 import ellipsisRes from "./ellipsisRes";
 import timer from "../page/timer.vue";
 import TopBox from "./TopBox.vue";
-import MonthTopBox from './MonthTopBox.vue';
+import MonthTopBox from "./MonthTopBox.vue";
 
 export default {
   data() {
@@ -37,7 +36,6 @@ export default {
   },
   methods: {
     getApi,
-    imageGetError,
     toggleOnload() {
       const arr = this.noLists;
       this.noLists = this.oldList;
