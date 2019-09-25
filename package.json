@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@videojs/http-streaming": "^1.10.1",
     "bootstrap": "^4.3.1",
     "flv.js": "^1.5.0",
     "fs": "^0.0.1-security",
     "hls": "^0.0.1",
     "jquery": "^3.4.1",
+    "jsx-loader": "^0.13.2",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -18,7 +20,8 @@
     "swiper": "^4.5.0",
     "video.js": "^7.5.4",
     "videojs-contrib-hls": "^5.15.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

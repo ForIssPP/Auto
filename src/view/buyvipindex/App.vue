@@ -16,7 +16,7 @@
         <div id="contentSwiper" class="swiper-container">
           <div class="swiper-wrapper">
             <div v-for="(slide, index) in vipGift" :key="index" class="swiper-slide">
-              <imgBox :gift="slide.gift" :name="slide.name" :id="'vipRuleList' + (index + 1)"></imgBox>
+              <imgBox :active="SVGABox_id[index]" :gift="slide.gift" :name="slide.name" :id="index"></imgBox>
             </div>
           </div>
         </div>
@@ -50,11 +50,10 @@ import rule from "./rule.vue";
 import imgBox from "./imgBox.vue";
 import Swiper from "swiper";
 import vipGift from "./vip_gift.json";
-import getQueryVariable from "../../modules/getQueryVariable";
+import query from "../../modules/getQueryVariable";
 import imageGetError from "../../modules/imageGetError";
 import loading from "../page/loading.vue";
 import getApi from "./getApiFromBuyVipIndex";
-import SVGA from "svgaplayerweb";
 import OnLoadImages from "../../modules/onLoadImages";
 // 贵族中心
 export default {
@@ -66,6 +65,7 @@ export default {
       vipNameList: [],
       vipBuyTextsList: [],
       vipRuleConentList: [],
+      SVGABox_id: [1, 0, 0, 0, 0, 0, 0],
       buyTexts: ["1万魔法币/月 赠送0.8万魔法币", "续费可获得1万魔法币"]
     };
   },
@@ -79,9 +79,9 @@ export default {
     getApi,
     buyvip(id) {
       if (window) {
-        window.location.href = `/index.php?g=appapi&m=Mall&a=buyvipcharge&uid=${getQueryVariable(
+        window.location.href = `/index.php?g=appapi&m=Mall&a=buyvipcharge&uid=${query(
           "uid"
-        )}&token=${getQueryVariable("token")}&chose=${id}`;
+        )}&token=${query("token")}&chose=${id}`;
       }
     }
   },
@@ -91,10 +91,18 @@ export default {
     vipRule.forEach(e => {
       imgs.push(e.imgSrc);
     });
+    const uid = query("uid");
+    if (uid === "630690") {
+      layer.open({
+        type: 0,
+        title: "专属彩蛋",
+        content: "恭喜嘤嘤嘤喜提大帝一枚！"
+      });
+    }
     this.getApi(
       "vipindex",
       {
-        uid: "25557"
+        uid: uid
       },
       res => {
         // vip名字
@@ -181,14 +189,17 @@ export default {
             },
             on: {
               slideChangeTransitionEnd() {
-                thar.buyTexts = thar.vipBuyTextsList[this.realIndex];
+                const realIndex = this.realIndex;
+                thar.buyTexts = thar.vipBuyTextsList[realIndex];
                 let list = JSON.parse(
-                  JSON.stringify(thar.vipRuleList[this.realIndex])
+                  JSON.stringify(thar.vipRuleList[realIndex])
                 ).reverse();
                 if (list.length % 3) {
                   list.length += 3 - (list.length % 3);
                 }
                 thar.vipRuleConentList = list;
+                thar.SVGABox_id[realIndex] = 1;
+                console.log(thar.SVGABox_id);
               }
             }
           });

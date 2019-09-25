@@ -1,0 +1,121 @@
+@import '../../scss/mixins/mixin';
+@import '../../scss/mixins/deletstyle';
+@import '../../scss/mixins/responsive';
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+html,
+body,
+#app {
+  @include createBox(100%, 100%);
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include bgc_bgurl("http://image.mjlive-app.com/page/mystical/bg.png", 100%, 100%);
+  z-index: -1;
+}
+
+.title {
+  @extend %fcc;
+  padding-top: 1.14rem;
+  padding-bottom: .68rem;
+
+  .logo {
+    @include createBox(2.71rem, 2.71rem);
+  }
+
+  .text {
+    margin-top: 0.24rem;
+    @include createBox(2.84rem, .45rem);
+  }
+}
+
+.rule-text {
+  @extend %fcc;
+
+  .title {
+    padding-top: 0;
+    padding-bottom: .27rem;
+    @include cfz_fw(#FFFFFF, .36rem, 500);
+  }
+
+  .text-box p {
+    @include cfzlh_fw(#fff, .3rem, .5rem, 500);
+    text-align: center;
+    opacity: 0.65;
+  }
+}
+
+.bottom {
+  position: absolute;
+  width: 100%;
+  bottom: .3rem;
+  @extend %fc;
+}
+
+.click-btn {
+  @include bgc_radiusBox(#A491F8, .5rem, 4rem, 1rem);
+  @include cfzls_fw(#fff, .48rem, 4px, 500);
+}
+
+.chose-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -4.9 / 2 + rem;
+  margin-top: -3.8 / 2 + rem;
+  @include bgc_radiusBox(#fff, .28rem, 4.9rem, 3.8rem);
+  transition: all .5s;
+  transform: scale(0);
+  @extend %fcs;
+
+  &.show {
+    transform: scale(1);
+  }
+
+  .chose-title img {
+    @include roundBox(1.74rem);
+    position: absolute;
+    top: -1.1rem;
+    left: 50%;
+    margin-left: -1.9 / 2 + rem;
+    border: .08rem solid #fff;
+  }
+
+  p {
+    @include cfzlh_fw(#080B11, .36rem, .6rem, 600);
+
+    &:first-of-type {
+      margin-top: 1.08rem;
+    }
+
+    &:last-of-type {
+      margin-bottom: .35rem;
+    }
+  }
+
+  .click-btn {
+    @include createBox(3.2rem, .8rem);
+  }
+}

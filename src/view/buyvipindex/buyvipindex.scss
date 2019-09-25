@@ -83,6 +83,7 @@
 }
 
 .img-box {
+  position: relative;
   @include bgc_bgurl("http://image.mjlive-app.com/page/vip/car_bg.png", 4.61rem, 4.86rem);
   @extend %fcs;
   margin: 0 auto;
@@ -97,6 +98,10 @@
   }
 
   .name {
+    position: absolute;
+    left: 50%;
+    bottom: .76rem;
+    margin-left: -2.55 / 2 + rem;
     img {
       @include createBox(2.55rem, .33rem);
     }
