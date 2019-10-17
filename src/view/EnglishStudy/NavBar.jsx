@@ -9,20 +9,24 @@ export default class extends React.Component {
     }
 
     renderNavBar() {
-        const reList = this.props.navBarMap.map(({name, onClick, className}, index) => {
-            return <TextList className={className} key={index} name={name} onClick={onClick} />
-        });
+        const { navBarMap } = this.props;
 
-        return reList;
+        if (!navBarMap) {
+            return <div></div>;
+        } else {
+            return navBarMap.map(({ name, onClick, className }, index) => {
+                return <TextList class_name={className} key={index} name={name} onClick={onClick} />
+            });;
+        }
     }
 
     render() {
         return (
-            <div className="nav-bar">
-                <ul>
+            <nav className="navbar navbar-expand bg-light ">
+                <ul className="navbar-nav">
                     {this.renderNavBar()}
                 </ul>
-            </div>
+            </nav>
         )
     }
 }
