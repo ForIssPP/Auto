@@ -1,9 +1,9 @@
 <template>
   <div>
     <NavBar :navbarMap="navbarMap"></NavBar>
-    <div class="bg-light">
-      <keep-alive>
-        <component :is="toggleView(view)"></component>
+    <div class="content">
+      <keep-alive :exclude="'Download'">
+        <component class="mt-3" :is="toggleView(view)"></component>
       </keep-alive>
     </div>
   </div>
