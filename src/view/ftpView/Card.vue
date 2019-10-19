@@ -4,7 +4,7 @@
     <div class="card-body">
       <slot></slot>
     </div>
-    <div v-if="cardFooter" class="card-footer" v-html="cardFooter">{{ cardFooter }}</div>
+    <div v-if="cardFooter" class="card-footer" v-html="cardFooter"></div>
   </div>
 </template>
 <script>
