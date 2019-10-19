@@ -1,0 +1,16 @@
+{
+    "vue init": {
+        "scope": "javascriptreact",
+        "prefix": "init",
+        "body": [
+            "import React from 'react';",
+            "import ReactDOM from 'react-dom';\n",
+            "export default class extends React.Component {",
+            "\t$1",
+            "\trender () {\n",
+            "\t}",
+            "}",
+        ],
+        "description": "init jsx"
+    }
+}

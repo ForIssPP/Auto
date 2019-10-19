@@ -1,0 +1,64 @@
+@import '../../scss/mixins/mixin';
+
+%fc {
+  @include flexCenter;
+}
+
+%fs {
+  @include createFlexBox(center, flex-start, row);
+}
+
+%fss {
+  @include createFlexBox(flex-start, flex-start, row);
+}
+
+%fcs {
+  @include createFlexBox(center, flex-start);
+}
+
+%fcc {
+  @include flexColumnCenter;
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.content {
+  padding-bottom: 30px;
+}
+
+.card-img-top {
+  min-height: 50px;
+}
+
+.download {
+  .card-img-top {
+    height: 200px;
+  }
+
+  .card-title {
+    @include textOverFlow(100%);
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .btn {
+    float: right;
+  }
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.updata {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.custom-file-label::after {
+  content: 'post';
+}
