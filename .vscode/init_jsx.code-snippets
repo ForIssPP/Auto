@@ -8,6 +8,7 @@
             "export default class extends React.Component {",
             "\t$1",
             "\trender () {\n",
+            "\t\treturn ('any');",
             "\t}",
             "}",
         ],
