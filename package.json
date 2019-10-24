@@ -34,6 +34,7 @@
     "browserlist": "^1.0.1",
     "clean-webpack-plugin": "^2.0.1",
     "core-js": "^3.2.1",
+    "cross-env": "^6.0.3",
     "css-loader": "^2.1.1",
     "expose-loader": "^0.7.5",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -68,8 +69,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config bundle.js",
-    "dev": "webpack-dev-server --config dev.js",
+    "build": "webpack",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "pull": "python \"C:\\Users\\Administrator\\Desktop\\study py\\8.12\\pullPHP.py\""
   },
   "author": "",

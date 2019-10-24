@@ -3,9 +3,17 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugins = require('html-webpack-plugin');
 const glob = require("glob");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/ChunkModuleIdRangePlugin')
+const CommonsChunkPlugin = require('webpack/lib/optimize/ChunkModuleIdRangePlugin');
+const mode = process.env.NODE_ENV;
+const merge = require('webpack-merge');
+const _FILENAME = process.argv[4] && process.argv[4].slice(2);
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
 
-module.exports = {
+let public = 'appapi/banner/';
+
+const config = {
     entry: {
         app: `./src/index.js`,
     },
@@ -76,4 +84,117 @@ module.exports = {
             }
         ]
     },
+};
+
+const webpackConfigPro = {
+    mode: 'production',
+    output: {
+        publicPath: '__PUBLIC__/' + public,
+        // chunkFilename: "[name].[chunkHash:8].js"
+        filename: `js/${_FILENAME}.[hash:8].js`,
+        chunkFilename: '[name].js',
+    },
+    externals: {
+        vue: 'Vue',
+        jquery: 'jQuery',
+        swiper: 'Swiper'
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                parallel: true, // 允许并发
+                cache: true, // 开启缓存
+            }),
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin({
+            filename: `css/${_FILENAME || 'index'}.[hash:8].css`,
+        }),
+        new HtmlWebpackPlugins({
+            template: `./src/index.html`,
+            filename: `${_FILENAME || 'index'}.html`,
+        }),
+        // 压缩无用css
+        // new PurifyCssWebpack({
+        //     paths: glob.sync(path.join(__dirname, 'src/*.html'))
+        // }),
+    ],
+    module: {
+        rules: [{
+                test: /\.(scss||sass||css)$/,
+                exclude: /^node_modules$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader', 'sass-loader'],
+                })
+            }, {
+                test: /\.(png|svg|jpg|gif)$/,
+                exclude: /^node_modules$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        name: '/[name].[ext]',
+                        limit: 1,
+                        outputPath: 'images'
+                    }
+                }]
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /^node_modules$/,
+                loader: 'babel-loader?cacheDirectory=true',
+                options: {
+                    presets: [
+                        "@babel/env"
+                    ]
+                }
+            },
+        ],
+    },
+};
+
+const webpackConfigDev = {
+    mode: 'development',
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+        disableHostCheck: true,
+        hot: true,
+        port: 8080,
+        host: 'loc.mjliveapp.com',
+    },
+    plugins: [
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugins({
+            template: `./src/index.html`,
+        })
+    ],
+    module: {
+        rules: [{
+                test: /\.(scss||sass||css)$/,
+                exclude: /^node_modules$/,
+                use: ['vue-style-loader', 'css-loader', 'sass-loader', ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                exclude: /^node_modules$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        name: 'name=[name].[ext]',
+                        limit: 8000,
+                        outputPath: 'images'
+                    }
+                }]
+            },
+        ]
+    },
+};
+
+if (mode === "development") {
+    module.exports = merge(config, webpackConfigDev);
+} else {
+    module.exports = merge(config, webpackConfigPro);
 }
