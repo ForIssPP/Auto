@@ -15,11 +15,13 @@ let public = 'appapi/banner/';
 
 const config = {
     entry: {
-        app: `./src/index.js`,
+        app: ['react-hot-loader/patch', './src/index.js']
     },
     resolve: {
         alias: {
             vue: 'vue/dist/vue.js',
+            'react-dom': '@hot-loader/react-dom',
+            'React': 'React'
         }
     },
     plugins: [
@@ -146,6 +148,7 @@ const webpackConfigPro = {
                 loader: 'babel-loader?cacheDirectory=true',
                 options: {
                     presets: [
+                        "@babel/react",
                         "@babel/env"
                     ]
                 }
@@ -156,7 +159,7 @@ const webpackConfigPro = {
 
 const webpackConfigDev = {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     devServer: {
         contentBase: './dist',
         disableHostCheck: true,
