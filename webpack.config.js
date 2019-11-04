@@ -17,11 +17,15 @@ const config = {
     entry: {
         app: ['react-hot-loader/patch', './src/index.js']
     },
+    // noParse:[/vue\.js$/, /react\.min\.js$/],
     resolve: {
+        modules: [path.resolve(__dirname, 'node_modules')],
+        mainFields: ['main'],
+        extensions: ['.js', 'vue', 'jsx', '.json'],
         alias: {
             vue: 'vue/dist/vue.js',
-            'react-dom': '@hot-loader/react-dom',
-            'React': 'React'
+            // 'react-dom': '@hot-loader/react-dom',
+            'React': path.resolve(__dirname, './node_modules/react/dist/react.min.js')
         }
     },
     plugins: [
