@@ -11,6 +11,14 @@
         ["@babel/plugin-proposal-class-properties", {
             "loose": true
         }],
-        ["@babel/plugin-syntax-dynamic-import"]
+        ["@babel/plugin-syntax-dynamic-import"],
+        ["import", {
+            "libraryName": "antd",
+            "libraryDirectory": "lib"
+        }, "ant"],
+        ["import", {
+            "libraryName": "antd-mobile",
+            "libraryDirectory": "lib"
+        }, "antd-mobile"]
     ]
 }

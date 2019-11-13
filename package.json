@@ -34,6 +34,7 @@
     "@hot-loader/react-dom": "^16.10.2",
     "autoprefixer": "^9.6.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.12.2",
     "babel-upgrade": "^1.0.1",
     "browserlist": "^1.0.1",
     "clean-webpack-plugin": "^2.0.1",

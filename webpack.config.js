@@ -4,7 +4,7 @@ const HtmlWebpackPlugins = require('html-webpack-plugin');
 const glob = require("glob");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/ChunkModuleIdRangePlugin');
-const mode = process.env.NODE_ENV;
+const _ENV = process.env.NODE_ENV;
 const merge = require('webpack-merge');
 const _FILENAME = process.argv[4] && process.argv[4].slice(2);
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -17,15 +17,15 @@ const config = {
     entry: {
         app: ['react-hot-loader/patch', './src/index.js']
     },
-    // noParse:[/vue\.js$/, /react\.min\.js$/],
     resolve: {
-        modules: [path.resolve(__dirname, 'node_modules')],
+        // modules: [path.resolve(__dirname, 'node_modules')],
         mainFields: ['main'],
         extensions: ['.js', 'vue', 'jsx', '.json'],
         alias: {
             vue: 'vue/dist/vue.js',
             // 'react-dom': '@hot-loader/react-dom',
-            'React': path.resolve(__dirname, './node_modules/react/dist/react.min.js')
+            'React': path.resolve(__dirname, './node_modules/react/dist/react.min.js'),
+            // 'React': 'React'
         }
     },
     plugins: [
@@ -43,6 +43,7 @@ const config = {
         chunkFilename: '[name].js',
     },
     module: {
+        noParse: /node_modules\/(moment|chart\.js)/,
         rules: [{
                 test: /\.(woff|woff2|eot|ttf|otf|TTF|EOT|WOFF)$/,
                 use: [{
@@ -79,7 +80,8 @@ const config = {
             },
             {
                 test: /\.(js|jsx)$/,
-                exclude: /^node_modules$/,
+                exclude: /^node_modules|bower_components$/,
+                include: [path.resolve(__dirname, 'src')],
                 loader: 'babel-loader?cacheDirectory=true',
                 options: {
                     presets: [
@@ -163,13 +165,18 @@ const webpackConfigPro = {
 
 const webpackConfigDev = {
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'cheap-eval-source-map',
     devServer: {
         contentBase: './dist',
         disableHostCheck: true,
         hot: true,
         port: 8080,
         host: 'loc.mjliveapp.com',
+    },
+    performance: {
+        maxEntrypointSize: 250000,
+        maxAssetSize: 250000,
+        hints: 'warning',
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
@@ -200,7 +207,7 @@ const webpackConfigDev = {
     },
 };
 
-if (mode === "development") {
+if (_ENV === "development") {
     module.exports = merge(config, webpackConfigDev);
 } else {
     module.exports = merge(config, webpackConfigPro);
