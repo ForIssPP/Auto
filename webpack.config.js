@@ -12,15 +12,18 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const fs = require('fs');
 
-function entries () {
-  var jsDir = path.resolve(__dirname, 'src')
-  var entryFiles = glob.sync(jsDir + '/study/openCard/**/*.{js,jsx}')
+function entries() {
+  var jsDir = path.resolve(__dirname, 'src');
+  var entryFiles = glob.sync(jsDir + '/study/openCard/**/*.{js,jsx}');
   var map = {};
 
   for (var i = 0; i < entryFiles.length; i++) {
-      var filePath = entryFiles[i];
-      var filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'));
-      map[filename] = filePath;
+    var filePath = entryFiles[i];
+    var filename = filePath.substring(
+      filePath.lastIndexOf('/') + 1,
+      filePath.lastIndexOf('.')
+    );
+    map[filename] = filePath;
   }
   return map;
 }
@@ -46,7 +49,10 @@ const openCardHtmlPlugins = entryArray.map(pathName => {
 });
 let public = 'appapi/banner/';
 const config = {
-  entry: entries(),
+  // entry: entries(),
+  entry: {
+    app: ['react-hot-loader/patch', './src/index.js']
+  },
   resolve: {
     // modules: [path.resolve(__dirname, 'node_modules')],
     mainFields: ['main'],
@@ -59,7 +65,11 @@ const config = {
     }
   },
   plugins: [
-    ...openCardHtmlPlugins,
+    // ...openCardHtmlPlugins,
+    new HtmlWebpackPlugins({
+      template: `./src/index.html`,
+      filename: `${_FILENAME || 'index'}.html`
+    }),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin()
   ],
@@ -127,7 +137,7 @@ const config = {
 const webpackConfigPro = {
   mode: 'production',
   output: {
-    publicPath: '__PUBLIC__/' + public,
+    // publicPath: '__PUBLIC__/' + public,
     // chunkFilename: "[name].[chunkHash:8].js"
     filename: `js/${_FILENAME}.[hash:8].js`,
     chunkFilename: '[name].js'
@@ -146,10 +156,10 @@ const webpackConfigPro = {
     ]
   },
   plugins: [
-    // new ExtractTextPlugin({
-    //   filename: `css/${_FILENAME || 'index'}.[hash:8].css`
-    // }),
-    ...openCardCssPlugins,
+    new ExtractTextPlugin({
+      filename: `css/${_FILENAME || 'index'}.[hash:8].css`
+    }),
+    // ...openCardCssPlugins,
     new webpack.optimize.SplitChunksPlugin({
       name: 'common',
       chunks: 'all',
@@ -170,8 +180,8 @@ const webpackConfigPro = {
     })
     // 压缩无用css
     // new PurifyCssWebpack({
-    //     paths: glob.sync(path.join(__dirname, 'src/*.html'))
-    // }),
+    //   paths: glob.sync(path.join(__dirname, 'src/*.html'))
+    // })
   ],
   module: {
     rules: [
